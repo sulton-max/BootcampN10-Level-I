@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace N1
 {
-    internal class 
+    internal class N1
     {
     }
 }
