@@ -106,3 +106,10 @@ Console.WriteLine($"objectA == objectB - {objectA == objectB}");
 Console.WriteLine($"objectA.Equals(objectB) - {objectA.Equals(objectB)}");
 Console.WriteLine($"object.Equals(objectA,objectB) - {object.Equals(objectA, objectB)}");
 Console.WriteLine($"object.ReferenceEquals(objectA, objectB) - {object.ReferenceEquals(objectA, objectB)}");
+
+// Searching
+
+// Replacing
+
+// Trim and Padding
+
