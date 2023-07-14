@@ -1,5 +1,4 @@
-﻿// Concatenation
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 #region Concatenation
 
@@ -10,7 +9,7 @@ var fullNameB = string.Concat(firstName, lastName);
 
 #endregion 
 
-// Escape characters
+#region Escape characters
 var comment = "U aytdiki :\"Ispeak C#\"";
 var charValue = '\'';
 var textValue = "\v C# \v .NET";
@@ -21,11 +20,15 @@ var greeting = "Hi John \nWelcome to our portal!";
 Console.WriteLine(greeting);
 Console.WriteLine();
 
-// Verbatim string
+#endregion
+
+#region Verbatim string
 // Verbatim string escape character maxsus vazifasinidan ozod qiladi
 var filePath = @"D:\Projects\Repositories\Company\NajotTalim\Groups\Bootcamp N10\BootcampN10-Level-I\N3\Program.cs";
 
-// Interpolation and Formatting
+#endregion
+
+#region Interpolation and Formatting
 var firstNameB = "G`ayrat";
 var appName = "Teshavoy App";
 var url = "www.example.com";
@@ -36,7 +39,6 @@ var greetingB = $"Hello {firstName + lastName}, Welcome to our {1}. Enter this {
 Console.WriteLine(greetingB);
 Console.WriteLine();
 
-
 // Formatting
 // Formatting - shablon koddan tashqari bo'lsa ishlatiladi
 var greetingA = "Hello {0}, Welcome to our {1}. Enter this {2} to verify your account";
@@ -45,11 +47,12 @@ var formattedGreetingA = string.Format(greetingA, firstNameB + lastName, appName
 Console.WriteLine(formattedGreetingA);
 Console.WriteLine(greetingA, firstNameB, appName, url);
 
-// Length, indexing va substring
+#endregion
+
+#region Length, indexing va substring
 // Length
 Console.WriteLine($"formattedGreetingA uzunligi {formattedGreetingA.Length}");
 Console.WriteLine();
-
 
 // Index
 Console.WriteLine($"Element at index 60 : {formattedGreetingA[60]}");
@@ -58,6 +61,10 @@ Console.WriteLine();
 // Substring
 Console.WriteLine($"Substring from index {10} wizth length {10}: {formattedGreetingA.Substring(10, 10)}");
 Console.WriteLine();
+
+#endregion
+
+#region Splitting and Joining
 
 // Splitting
 var text = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum assumenda laborum debitis maiores, " +
@@ -91,7 +98,9 @@ var joinedString = string.Join(' ', words);
 Console.WriteLine(joinedString);
 Console.WriteLine();
 
-// Cases - Lower, Upper
+#endregion
+
+#region Cases - Lower, Upper
 // camelCase
 // PascalCase
 // snake_case
@@ -105,7 +114,9 @@ var capitalizedFirstName = string.Concat(unformattedFirstname.Substring(0, 1)
 Console.WriteLine(capitalizedFirstName);
 Console.WriteLine();
 
-// Comparison and Equality
+#endregion
+
+#region Comparison and Equality
 
 // ! Only for objects
 // == - compares by reference
@@ -144,6 +155,7 @@ var test = new string[10]
     "test"
 };
 
+// How string works in memory
 var random = new Random();
 for( var index = 0; index < test.Length; index++)
 {
@@ -170,7 +182,7 @@ for( var index = 0; index < test.Length; index++)
     Console.WriteLine();
 }
 
-// ! Only for objects
+// ! Only for strings
 // == - compares by value
 // instance.Equals - by value
 // class.Equals - by value
@@ -214,13 +226,19 @@ var firstName2 = "jOhN";
 Console.WriteLine();
 Console.WriteLine($"firstName1 equals firstName2 - {firstName1.Equals(firstName2, StringComparison.OrdinalIgnoreCase)}");
 
-// Searching
+#endregion
+
+#region Searching
+
 Console.WriteLine($"text contains saepe - {text.Contains("saepE", StringComparison.OrdinalIgnoreCase)}");
 var wordIndexA = text.IndexOf("blanditiiS", StringComparison.OrdinalIgnoreCase);
 var wordIndexB = text.IndexOf("accusamus", StringComparison.OrdinalIgnoreCase);
 Console.WriteLine(text.Substring(wordIndexA + "blanditiiS".Length, wordIndexB - wordIndexA));
 
-// Replacing
+#endregion
+
+#region Replacing
+
 var userNameToken = "{{User}}";
 var urlToken = "{{Url}}";
 var appNameToken = "{{AppName}}";
@@ -235,7 +253,10 @@ var formattedNotification = notification
 
 Console.WriteLine(formattedNotification);
 
-// Trim and Padding
+#endregion
+
+#region Trim and Padding
+
 Console.WriteLine();
 Console.WriteLine("Trimming : ");
 var exampleForTrim = "     text  text  **";
@@ -243,7 +264,12 @@ var exampleForTrim = "     text  text  **";
 Console.WriteLine($"Trim default - {exampleForTrim.Trim()} and lenght - {exampleForTrim.Trim().Length}");
 Console.WriteLine($"Trim default - {exampleForTrim.Trim('*', ' ')} and lenght - {exampleForTrim.Trim('*', ' ').Length}");
 
-// Padding
+#endregion
+
+#region Padding
+
 var exampleForPadding = "text";
 Console.WriteLine($"Padding default - {exampleForPadding.PadLeft(10)} and lenght - {exampleForPadding.PadLeft(10)}");
 Console.WriteLine($"Padding default - {exampleForPadding.PadRight(10, '*')} and lenght - {exampleForPadding.PadRight(10)}");
+
+#endregion
