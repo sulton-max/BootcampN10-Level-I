@@ -1,4 +1,5 @@
-﻿// Primitive types
+﻿#region Primitive types
+
 using System.Runtime.InteropServices;
 
 bool hasMoney = true;
@@ -32,7 +33,10 @@ string firstName = "John";
 Console.WriteLine(piDecimal);
 Console.WriteLine(Math.PI);
 
-// Definition and Initialization
+#endregion
+
+#region Definition and Initialization
+
 // Definition
 byte ageB;
 //Console.WriteLine(ageB);
@@ -42,7 +46,10 @@ byte ageB;
 // Initialization
 ageB = 15;
 
-// Read and Write
+#endregion
+
+#region Read and Write
+
 int speedA = 100;
 int speedB;
 
@@ -52,7 +59,9 @@ speedB = speedA;
 // Read operation for speed B
 speedA = speedB;
 
-// Explicit va Implicity typing
+#endregion
+
+#region Explicit va Implicity typing
 
 // Implicit
 var lastName = "Doe";
@@ -68,7 +77,10 @@ var ageZ = 10;
 // Explicit
 int ageX = 10;
 
-// Literals or Const Value
+#endregion
+
+#region Literals or Const Value
+
 var boolValue = false;
 var charValue = '@';
 var byteValue = (byte)10;
@@ -96,7 +108,10 @@ string defaultStringValueB = string.Empty;
 
 Console.WriteLine(defaultValue);
 
-// Primitive and Complex types
+#endregion
+
+#region Primitive and Complex types
+
 // Primitive 
 var productName = "Headphones";
 
@@ -104,39 +119,51 @@ var productName = "Headphones";
 DateTime now = DateTime.Now;
 Console.WriteLine(now);
 
-// Value and Reference types
+#endregion
+
+#region Value and Reference types
+
+// Value type
 var isWhite = false;
+
+// Reference type
 var address = "Bobur Shox ko'chasi, 8";
 
-// Static va Dynamic
+#endregion
+
+#region Static va Dynamic
 
 // Static
 var modelNumber = "34567890";
 
 // Dynamic
 
-// object bilan Member lariga murojaat qilib bo'maydi
+#endregion
+
+#region Rules
+
+// Rule #1 object bilan Member lariga murojaat qilib bo'maydi
 object exampleObject = new User();
 //exampleObject.Name = "Tom";
 
-// Dynamic tipga xohlagan tipdagi qiymatni saqlash mumkin
+// Rule #2 Dynamic tipga xohlagan tipdagi qiymatni saqlash mumkin
 object objectA = 10;
 objectA = "firstName";
 var unboxedString = (string)objectA;
 
-// Primtiv tiplar ishlatilganda dynamic tiplar bilan boxing-unboxing sodir bo'ladi
+// Rule #3 Primtiv tiplar ishlatilganda dynamic tiplar bilan boxing-unboxing sodir bo'ladi
 // When used with primitive types, boxing-unboxing happens
 Console.WriteLine(unboxedString);
 
 // Can access members with dynamic
-// Dynamic tipi bilan memberlariga murojaat qilish mumkin
+// Rule #4 Dynamic tipi bilan memberlariga murojaat qilish mumkin
 dynamic objectB = new User();
 objectB.Name = "Bob";
 Console.WriteLine(objectB.Name);
 //Console.WriteLine(objectB.LastName);
 
 // Does change the address
-// Agar o'zgaruvchi HEAP da joylashgan bo'lsa dynamic ga o'tkazilsa,
+// Rule #5 Agar o'zgaruvchi HEAP da joylashgan bo'lsa dynamic ga o'tkazilsa,
 //  address o'zgarmaydi 
 //var staticString = "string";
 //object dynamicString = staticString;
@@ -154,11 +181,19 @@ Console.WriteLine(objectB.Name);
 //IntPtr pointerC = handleC.AddrOfPinnedObject();
 //Console.WriteLine(pointerC.ToString());
 
-// Built-in and Custom types
+#endregion
+
+#region Built-in and Custom types
+
+// Built-In type
 var dateTime = new DateTime(2023, 7, 12);
+
+// Custom Type
 var foydalanuvchi = new User();
 
-// Arrays
+#endregion
+
+#region Arrays
 // Bir o'lchamli massiv
 // Explicit e'lon qilganda tipida son ko'rsatilmaydi
 int[] sonlarMassiviA = new int[] { 1, 2, 3 };
@@ -233,6 +268,8 @@ for (var index = 0; index < 3; index++)
 
     Console.WriteLine();
 }
+
+#endregion
 
 public class User
 {
