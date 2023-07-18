@@ -1,54 +1,57 @@
-﻿#region Operators 
+﻿using System.Runtime.InteropServices;
+using System;
 
-//Console.WriteLine("Arithmetic operatorlar : ");
-//// Arithmetic operatorlar - arifmetik
+#region Operators 
 
-//// Unary 
+Console.WriteLine("Arithmetic operatorlar : ");
+// Arithmetic operatorlar - arifmetik
 
-//// Increment
-//var forIncrement = 1;
+// Unary 
 
-//// Post Increment
-////Console.WriteLine(forIncrement++);
+// Increment
+var forIncrement = 1;
 
-//// Pre Increment
-////Console.WriteLine(++forIncrement);
+// Post Increment
+Console.WriteLine(forIncrement++);
 
-//// Decrement
+ //Pre Increment
+Console.WriteLine(++forIncrement);
 
-//// Post Decrement
-////Console.WriteLine(forIncrement--);
+// Decrement
 
-//// Pre Decrement
-////Console.WriteLine(--forIncrement);
+// Post Decrement
+Console.WriteLine(forIncrement--);
 
-//// Minus
-////--forIncrement;
-////--forIncrement;
-////--forIncrement;
-////Console.WriteLine(-forIncrement);
-////Console.WriteLine(forIncrement);
+// Pre Decrement
+Console.WriteLine(--forIncrement);
 
-//// Binary
-//var a = 10 + 10;
-//var b = 10 - 10;
-//var c = 10 * 10;
-//var d = 11F / 10;
-//var e = 10 % 10;
+// Minus
+--forIncrement;
+--forIncrement;
+--forIncrement;
+Console.WriteLine(-forIncrement);
+Console.WriteLine(forIncrement);
 
-//// Assignment operatorlar - tenglash
-//int f, h, g;
-//f = h = g = 10;
-//Console.WriteLine(f);
-//Console.WriteLine(h);
-//Console.WriteLine(g);
+// Binary
+var a = 10 + 10;
+var b = 10 - 10;
+var c = 10 * 10;
+var d = 11F / 10;
+var e = 10 % 10;
 
-//// Operator with assignment
-//f += 10 + h;
-//f -= 10;
-//f *= 10;
-//f /= 10;
-//f %= 10;
+// Assignment operatorlar - tenglash
+int f, h, g;
+f = h = g = 10;
+Console.WriteLine(f);
+Console.WriteLine(h);
+Console.WriteLine(g);
+
+// Operator with assignment
+f += 10 + h;
+f -= 10;
+f *= 10;
+f /= 10;
+f %= 10;
 
 //// Boolean operators - mantiqiy
 
@@ -119,9 +122,6 @@
 #endregion
 
 #region Array operations
-
-using System.Runtime.InteropServices;
-using System;
 
 var friends = new string[]
 {
@@ -228,41 +228,47 @@ Array.Resize(ref friends, friends.Length + 5);
 
 //var test = new DateTime(2000, 4, 25);
 
-var birthdates = new DateTime[5]
-{
-    new DateTime(2000, 10, 1),
-    new DateTime(2006, 12, 1),
-    new DateTime(2000, 1, 1),
-    new DateTime(2007, 6, 1),
-    new DateTime(2000, 7, 1)
-};
+//var birthdates = new DateTime[5]
+//{
+//    new DateTime(2000, 10, 1),
+//    new DateTime(2006, 12, 1),
+//    new DateTime(2000, 1, 1),
+//    new DateTime(2007, 6, 1),
+//    new DateTime(2000, 7, 1)
+//};
 
-var names = new string[5]
-{
-    "John",
-    "Bob",
-    "G'ayrat",
-    "Timmy",
-    "Teshavoy"
-};
+//var names = new string[5]
+//{
+//    "John",
+//    "Bob",
+//    "G'ayrat",
+//    "Timmy",
+//    "Teshavoy"
+//};
 
-var tempDate = default(DateTime);
-var tempName = default(string);
+//var tempDate = default(DateTime);
+//var tempName = default(string);
 
-for(var indexA = 0; indexA <  names.Length - 1; indexA++)
-    for (var indexB = indexA + 1; indexB < names.Length - 1; indexB++)
-        if (birthdates[indexA].DayOfYear > birthdates[indexB].DayOfYear)
-        {
-            tempDate = birthdates[indexA];
-            birthdates[indexA] = birthdates[indexB];
-            birthdates[indexB] = tempDate;
+//for(var indexA = 0; indexA <  names.Length - 1; indexA++)
+//    for (var indexB = indexA + 1; indexB < names.Length - 1; indexB++)
+//        if (birthdates[indexA].DayOfYear > birthdates[indexB].DayOfYear)
+//        {
+//            tempDate = birthdates[indexA];
+//            birthdates[indexA] = birthdates[indexB];
+//            birthdates[indexB] = tempDate;
 
-            tempName = names[indexA];
-            names[indexA] = names[indexB];
-            names[indexB] = tempName;
-        }
+//            tempName = names[indexA];
+//            names[indexA] = names[indexB];
+//            names[indexB] = tempName;
+//        }
 
-for (var index = 0; index < names.Length; index++)
-    Console.WriteLine(names[index] + " " + birthdates[index]);
+//for (var index = 0; index < names.Length; index++)
+//Console.WriteLine(names[index] + " " + birthdates[index]);
 
 #endregion
+
+Console.WriteLine("Tim".CompareTo("Bob"));
+
+// Variables and consts
+const double PI = Math.PI;
+
