@@ -63,7 +63,7 @@ for (int indexA = 0; indexA < 10;)
     {
         if (uniqueValues[indexB] == randomValue)
         {
-            Console.WriteLine($"Duplicate value generating unique value - {randomValue}");
+            Console.WriteLine($"Duplicate value while generating unique value - {randomValue}");
             break;
         }
         else
