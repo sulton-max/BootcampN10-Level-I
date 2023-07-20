@@ -54,7 +54,7 @@ var uniqueValues = new List<int>();
 
 for (int indexA = 0; indexA < 10;)
 {
-    var randomValue = random.Next(1, 10);
+    var randomValue = random.Next(1, 20);
 
     if (uniqueValues.Count == 0)
         uniqueValues.Add(randomValue);
