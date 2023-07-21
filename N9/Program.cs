@@ -119,18 +119,3 @@ Console.WriteLine(date.ToString("dd.MM.yyyy"));
 #endregion
 
 
-#region Nested Controls Structures
-
-
-#endregion
-
-
-#region Error Handling
-
-
-#endregion
-
-#region OOP Intro
-
-
-#endregion

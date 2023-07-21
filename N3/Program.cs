@@ -10,6 +10,7 @@ var fullNameB = string.Concat(firstName, lastName);
 #endregion 
 
 #region Escape characters
+
 var comment = "U aytdiki :\"Ispeak C#\"";
 var charValue = '\'';
 var textValue = "\v C# \v .NET";
