@@ -96,5 +96,62 @@
 
 #region OOP Intro
 
+// Data Structure - ma'lumot strukturasi - class, struct, record, interface, enum
+// Type - Exact Data Structure - aniq ma'lumot strukturasi
+// Instance - object - bitta example
+
+//var obj = new class
+var user = new User("John");
+
+// Roles - Model and Service
+
+var terminal = new AirportTerminal();
+
+terminal.Add(new User("John"));
+terminal.Add(new User("Bob"));
+terminal.Add(new User("G'ayrat"));
+
+terminal.Display();
+
+// Service
+public class AirportTerminal
+{
+    // Member - data, behavior
+
+    // Data - ma'lumotlar
+    // Field - maydon
+    public Queue<User> _users = new Queue<User>();
+
+    // Behavior - hatti-harakati
+    // Method - metod
+    // Parameter - 
+    // Argument - 
+    // Return Type - 
+    // Name - 
+    // void - hech nima qaytarmaydigan
+    public void Add(User user)
+    {
+        _users.Enqueue(user);
+    }
+
+    public void Display()
+    {
+        foreach (var user in _users)
+            Console.WriteLine(user.FirstName);
+    }
+}
+
+// Model
+public class User
+{
+    public User(string firstName)
+    {
+        FirstName = firstName;
+    }
+
+    public string FirstName { get; set; }
+}
+
+
 
 #endregion
