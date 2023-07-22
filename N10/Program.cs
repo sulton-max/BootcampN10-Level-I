@@ -127,6 +127,7 @@ public class AirportTerminal
     // Parameter - 
     // Argument - 
     // Return Type - 
+    // Body - 
     // Name - 
     // void - hech nima qaytarmaydigan
     public void Add(User user)
