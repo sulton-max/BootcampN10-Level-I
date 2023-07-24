@@ -6,7 +6,7 @@
 // project nomi - PascalCase
 // solution nomi - PascalCase
 // method - PascalCase
-// field - private - _camelCase, public - PascalCase
+// field - private - _camelCase, public - PascalCase        
 // method - PascalCase
 
 // firstName, lastName, age o'zgaruvchilarini e'lon qilish
