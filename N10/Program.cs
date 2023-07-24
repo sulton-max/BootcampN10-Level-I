@@ -101,6 +101,8 @@
 // Instance - object - bitta example
 
 //var obj = new class
+using System.Runtime.InteropServices;
+
 var user = new User("John");
 
 // Roles - Model and Service
@@ -112,6 +114,16 @@ terminal.Add(new User("Bob"));
 terminal.Add(new User("G'ayrat"));
 
 terminal.Display();
+
+var test = new Test("testa", "testb");
+
+GCHandle handleA = GCHandle.Alloc(test.TestA, GCHandleType.Pinned);
+IntPtr pointerA = handleA.AddrOfPinnedObject();
+Console.WriteLine(pointerA.ToString());
+
+GCHandle handleB = GCHandle.Alloc(test.TestB, GCHandleType.Pinned);
+IntPtr pointerB = handleB.AddrOfPinnedObject();
+Console.WriteLine(pointerB.ToString());
 
 // Service
 public class AirportTerminal
@@ -151,6 +163,18 @@ public class User
     }
 
     public string FirstName { get; set; }
+}
+
+public class Test
+{
+    public Test(string testA, string testB)
+    {
+        TestA = testA;
+        TestB = testB;
+    }
+
+    public string TestB { get; set; }
+    public string TestA { get; set; }
 }
 
 
