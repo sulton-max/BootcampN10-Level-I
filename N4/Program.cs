@@ -196,7 +196,7 @@ Console.WriteLine("Trimming : ");
 var exampleForTrim = "     text  text  **";
 
 Console.WriteLine($"Trim default - {exampleForTrim.Trim()} and lenght - {exampleForTrim.Trim().Length}");
-Console.WriteLine($"Trim default - {exampleForTrim.Trim('*', ' ')} and lenght - {exampleForTrim.Trim('*', ' ').Length}");
+Console.WriteLine($"Trim for * and space characters - {exampleForTrim.Trim('*', ' ')} and lenght - {exampleForTrim.Trim('*', ' ').Length}");
 
 #endregion
 
@@ -204,6 +204,6 @@ Console.WriteLine($"Trim default - {exampleForTrim.Trim('*', ' ')} and lenght - 
 
 var exampleForPadding = "text";
 Console.WriteLine($"Padding default - {exampleForPadding.PadLeft(10)} and lenght - {exampleForPadding.PadLeft(10)}");
-Console.WriteLine($"Padding default - {exampleForPadding.PadRight(10, '*')} and lenght - {exampleForPadding.PadRight(10)}");
+Console.WriteLine($"Padding for * - {exampleForPadding.PadRight(10, '*')} and lenght - {exampleForPadding.PadRight(10)}");
 
 #endregion
