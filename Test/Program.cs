@@ -15,11 +15,11 @@
 //    { new DateTime(2023, 10, 1) , 1}
 //};
 
-Console.WriteLine(DateTime.Now.ToString(""));
+//Console.WriteLine(DateTime.Now.ToString(""));
 
-var emails = new LinkedList<string>()
-{
-    "test"
-};
+//var emails = new LinkedList<string>()
+//{
+//    "test"
+//};
 
 

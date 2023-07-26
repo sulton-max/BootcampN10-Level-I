@@ -1,0 +1,14 @@
+
+@csharpsquid:S3903Š""Move 'Car' into a named namespace.(…×–Ì
+Ncsharpsquid:S3903b"%Move 'Animal' into a named namespace.(¸¦èÛüÿÿÿÿ8òÚ€™1
+Fcsharpsquid:S3903"#Move 'User' into a named namespace.(ÌÙ¨­øÿÿÿÿ
+gcsharpsquid:S1104Œ"DMake this field 'private' and encapsulate it in a 'public' property.(¾²òşÿÿÿÿ
+mcsharpsquid:S1104l"DMake this field 'private' and encapsulate it in a 'public' property.(‚ÚÓúÿÿÿÿ8 ÎŸğ˜1
+gcsharpsquid:S1104‘"DMake this field 'private' and encapsulate it in a 'public' property.(Òö‘çúÿÿÿÿ
+bcsharpsquid:S1104’"DMake this field 'private' and encapsulate it in a 'public' property.(Ëÿ±­
+gcsharpsquid:S1104“"DMake this field 'private' and encapsulate it in a 'public' property.(¾²òşÿÿÿÿ
+Zcsharpsquid:S2328¡"7Refactor 'GetHashCode' to not reference mutable fields.(û§ğèşÿÿÿÿ
+Gcsharpsquid:S125B"Remove this commented out code.(”ŒŞåúÿÿÿÿ8õÚ€™1
+Gcsharpsquid:S125U"Remove this commented out code.(Üçø£úÿÿÿÿ8õÚ€™1
+Bcsharpsquid:S125g"Remove this commented out code.(İ£Áó8õÚ€™1
+Bcsharpsquid:S125p"Remove this commented out code.(Ú°à¬8èŠ¦ğ˜1
