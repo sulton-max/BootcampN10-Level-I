@@ -244,12 +244,13 @@
 // Service - asosiy modellarni va taqiqlangan methodlar
 // Model - fieldlar
 
-// Encapsulation dan foydalanish usullari
+
 //- `Access Modifiers` - `public`, `private`, `protected`, `internal` modifiers
 //- `Properties(or Getter / Setters)` -exposes private fields by public getter/ setter
 //- `Interfaces` - hiding implementation by implementing public members from interfaces
 //- `Data Hiding` - hiding internal data and providing public methods to interact with
 //- `Encapsulating Complex Behavior` - grouping related behavior and providing well-
+
 
 
 
@@ -260,84 +261,41 @@
 
 //user._emailAddress = "";
 
-//using System.Text;
-//using N14;
+// Public ta'qiqlangan methodlar - ishlashiga ta'sir qiladi
 
-//var generator = new PasswordGenerator();
 
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-
-////generator.Clear();
-
-//// Do something
-
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-
-// Access Modifier
-
-// public - hamma uchun ochiq
-// protected - child tiplar hammasi ochiq
-// private - faqat tip uchun ochiq
-// internal - faqat project uchun ochiq
-// internal protected - faqat project uchun yoki child tip uchun ochiq
-// private protected - faqat tip uchun yoki child uchun ochiq
-
-// internal protected - internal or protected
-// private protected - internal and protected
-
-//planner.DailyEvents[""] = 
-
-// Model -  Invalid qiymatli fieldlar - borligiga ta'sir qiladi
-
-using System.Text.RegularExpressions;
-using Library;
-using N14;
-
-var teachingSytem = new TeachingSystem();
-var onlineTeachingSystem = new OnlineTeachingSystem();
-var validator = new Validator();
-
-// public
-teachingSytem.DisplayCourses();
-
-// protected
-onlineTeachingSystem.DisplayPlans();
-
-// private
-//teachingSytem.DisplayBalance(); // invisible
-teachingSytem.SendStatisticsToBoss("sdfsdf");
-
-// internal
-//validator.Regex = new Regex("234234"); // invisible
-
-public class SuperValidator : Validator
+public class PasswordGenerator
 {
-    // internal or protected
-    public SuperValidator()
-    {
-        EmailAddressRegex = new Regex("678"); // tezroq ishlaydigan regex
+    public List<string> Passwords;
 
-        // private protected
-        //FirstNameRegex = new Regex("678");
+    public PasswordGenerator()
+    {
+        Passwords = new List<string>();
+    }
+
+    internal  string Generate()
+    {
+        var password = "password";
+
+        //if (Passwords == null)
+        //    Passwords = new List<string>();
+
+        Passwords.Add(password);
+        return password;
+    }
+
+    // tashqaridan ishlatilishi ta'qiqlangan method
+    private void Clear()
+    {
+        Passwords = null;
+    }
+
+    public void Reset()
+    {
+        Clear();
+        Passwords = new List<string>();
     }
 }
-
-
-
-//teachingSytem.PlanOtherCourses() // not visible
 
 
 
