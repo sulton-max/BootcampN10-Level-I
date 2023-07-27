@@ -3,7 +3,7 @@
 // code reuse - code bitta joyda yozish va qayta ishlatish
 // abstraction - abstraksiya
 // inheritance - vorislik
-// vorislikda - data va behavior
+// vorislikda - data va behavior    
 
 // this
 // base
