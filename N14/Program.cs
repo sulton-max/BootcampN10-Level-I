@@ -1,232 +1,88 @@
-﻿#region Polymorhism - Overriding 
+﻿using Library;
+using N14;
+using N14.OverridingExample;
+using PasswordGenerator = N14.OverridingExample.PasswordGenerator;
 
-//var sparrow = new Sparrow();
-//sparrow.MakeSoundForBird();
-//sparrow.MakeSound();
+#region Polymorhism - Overriding
 
-// Multilevel inheritance
+// Overload - compile time
+// Override - runtime
 
 // Shart - har bitta hayvonni o'zini ovozi bo'lishi
-// Xato usullari
-// - har bitta tipda alohida method ochish - bunda childda kerakmas methodlar bo'ladi
+
+// Eski usul - har bitta method alohida e'lon qilish
+
+// Xato yechimlar :
+// - har bitta tipda alohida method ochish - bunda childda kerakmas methodlar bo'ladi - version 1
 // - parent tipda parameter qo'shish - hamma logika parent tipda bo'ladi
 
-// Eski usul
-//public class Animal
-//{
-//    public void MakeSound()
-//    {
-//        Console.WriteLine("...");
-//    }
-//}
+// To'g'ri yechimlar :
+// New Method - shunchaki e'lon qilishimiz mumkin ( warning ) yoki new keyword - version 2
+// Override - parentda virtual va childda override qilingan bo'lishi kerak, parentda e'lon qilingan methodni childda o'zgartiramiz - version 3
 
-//public class Bird : Animal
-//{
-//    public void MakeSoundForBird()
-//    {
-//        Console.WriteLine("sayramoq");
-//    }
-//}
+// Version 1 - har bitta method alohida e'lon qilish usuli
+Console.WriteLine("Alohida methodlardan foydalanganda : ");
+Console.WriteLine();
 
-//public class Sparrow : Bird
-//{
-//    public void MakeSoundAsSparrow()
-//    {
-//        Console.WriteLine("g`ishtmat");
-//    }
-//}
+var sparrow = new N14.SeparateMethods.Sparrow();
+Console.Write("sparrow.MakeSoundAsSparrow() - ");
+sparrow.MakeSoundAsSparrow();
 
+Console.Write("sparrow.MakeSoundAsBird() - ");
+sparrow.MakeSoundForBird(); // bu method sparrow ichida bo'lishi mumkinmas
 
-// Override - runtime
-// New Method - child tip ichida override qilmasdan o'zini logikasini ishlatish
+Console.Write("sparrow.MakeSound() - ");
+sparrow.MakeSound(); // bu method sparrow ichida bo'lishi mumkinmas
 
-
-// Ishlatish usuli
-// New Method - shunchaki e'lon qilishimiz mumkin ( warning ) yoki new keyword
-// Override - parentda virtual va childda override qilingan bo'lishi kerak
-
-// parentda e'lon qilingan methodni childda o'zgartiramiz
-// 
+Console.WriteLine();
 
 // Child tipidagi objectni Parent va o'zini tipida saqlash
+// Version 2 - duplicate methodlar e'lon qilamiz
 
-// Version 1 - new method
+Console.WriteLine("Duplicate methodlardan foydalanganda : ");
+Console.WriteLine();
 
-//Animal sparrowA = new Sparrow();
-//Bird sparrowB = new Sparrow();
-//Sparrow sparrowC = new Sparrow();
+N14.DuplicateMethods.Animal sparrowA = new N14.DuplicateMethods.Sparrow();
+N14.DuplicateMethods.Bird sparrowB = new N14.DuplicateMethods.Sparrow();
+N14.DuplicateMethods.Sparrow sparrowC = new N14.DuplicateMethods.Sparrow();
 
-//sparrowA.MakeSound();
-//sparrowB.MakeSound();
-//sparrowC.MakeSound();
+Console.Write("sparrowA.MakeSound() - ");
+sparrowA.MakeSound();
 
-//public class Animal
-//{
-//    public void MakeSound()
-//    {
-//        Console.WriteLine("...");
-//    }
-//}
+Console.Write("sparrowB.MakeSound() - ");
+sparrowB.MakeSound();
 
-//public class Bird : Animal
-//{
-//    public new void MakeSound()
-//    {
-//        Console.WriteLine("Making sound as bird");
-//    }
-//}
+Console.Write("sparrowC.MakeSound() - ");
+sparrowC.MakeSound();
 
-//public class Sparrow : Bird
-//{
-//    public new void MakeSound()
-//    {
-//        Console.WriteLine("Making sound as sparrow");
-//        Console.WriteLine("Making sound as sparrow");
-//        Console.WriteLine("Making sound as sparrow");
-//        Console.WriteLine("Making sound as sparrow");
-//        Console.WriteLine("Making sound as sparrow");
-//    }
-//}
+Console.WriteLine();
 
-// Version 2 - new method
-//Animal sparrowA = new Sparrow();
-//Bird sparrowB = new Sparrow();
-//Sparrow sparrowC = new Sparrow();
+// Version 2 - overriding
+Console.WriteLine("Overridingdan foydalanganda : ");
+Console.WriteLine();
 
-//sparrowA.MakeSound();
-//sparrowB.MakeSound();
-//sparrowC.MakeSound();
+N14.OverridingMethods.Animal sparrowD = new N14.OverridingMethods.Sparrow();
+N14.OverridingMethods.Bird sparrowE = new N14.OverridingMethods.Sparrow();
+N14.OverridingMethods.Sparrow sparrowF = new N14.OverridingMethods.Sparrow();
 
+Console.Write("sparrowD.MakeSound() - ");
+sparrowD.MakeSound();
 
-//public class Animal
-//{
-//    public virtual void MakeSound()
-//    {
-//        Console.WriteLine("...");
-//    }
-//}
+Console.Write("sparrowE.MakeSound() - ");
+sparrowE.MakeSound();
 
-//public class Bird : Animal
-//{
-//    //public virtual void MakeSound()
-//    //{
-//    //    Console.WriteLine("Making sound as bird");
-//    //}
-//}
+Console.Write("sparrowF.MakeSound() - ");
+sparrowF.MakeSound();
 
-//public class Sparrow : Bird
-//{
-//    public override void MakeSound()
-//    {
-//        base.MakeSound();
-//        Console.WriteLine("Making sound as sparrow");
-//    }
-//}
+Console.WriteLine();
 
 // Override example
-//using System.Text;
 
-//var generator = new SecurePasswordGenerator(4, true, true, true);
-//Console.WriteLine(generator.Generate());
+Console.WriteLine("Overriding ga misol : Generate methodi override qilingan ");
+Console.WriteLine();
 
-//public class PasswordGenerator
-//{
-//    public readonly int length;
-//    public readonly bool hasLetters;
-//    public readonly bool hasDigits;
-
-
-//    public PasswordGenerator(int length, bool hasLetters, bool hasDigits = false)
-//    {
-//        if (length < 4 || (hasLetters == false && hasDigits == false))
-//            throw new ArgumentException();
-
-//        this.length = length;
-//        this.hasLetters = hasLetters;
-//        this.hasDigits = hasDigits;
-//    }
-
-//    // a - z - 97 - 122
-//    // A - Z - 65 - 90
-//    public virtual string Generate()
-//    {
-//        var random = new Random();
-//        var password = new StringBuilder();
-
-//        for (var index = 0; index < length;)
-//        {
-//            if (hasDigits && random.Next(0, 2) == 0)
-//            {
-//                var randomDigit = random.Next(0, 10);
-//                password.Append(randomDigit);
-
-//                index++;
-//            }
-//            else if (hasLetters)
-//            {
-//                var randomChar = random.Next(0, 1) == 0
-//                    ? (char)random.Next(97, 123)
-//                    : (char)random.Next(65, 91);
-
-//                index++;
-
-//                password.Append(randomChar);
-//            }
-//        }
-
-//        return password.ToString();
-//    }
-//}
-
-//public class SecurePasswordGenerator : PasswordGenerator
-//{
-//    private readonly bool hasSymbols;
-
-//    public SecurePasswordGenerator(int length, bool hasLetters, bool hasSymbols, bool hasDigits = false)
-//        : base(length, hasLetters, hasDigits)
-//    {
-//        this.hasSymbols = hasSymbols;
-//    }
-
-//    public override string Generate()
-//    {
-//        var random = new Random();
-//        var password = new StringBuilder();
-
-//        for (var index = 0; index < length;)
-//        {
-//            var randomChoice = random.Next(0, 3);
-
-//            if (hasDigits && randomChoice == 0)
-//            {
-//                var randomDigit = random.Next(0, 10);
-//                index++;
-
-//                password.Append(randomDigit);
-//            }
-//            else if (hasLetters && randomChoice == 1)
-//            {
-//                var randomChar = random.Next(0, 1) == 0
-//                    ? (char)random.Next(97, 123)
-//                    : (char)random.Next(65, 91);
-//                password.Append(randomChar);
-
-//                index++;
-
-//            }
-//            else if (hasSymbols && randomChoice == 2)
-//            {
-//                var randomSymbol = (char)random.Next(33, 48);
-//                password.Append(randomSymbol);
-
-//                index++;
-
-//            }
-//        }
-
-//        return password.ToString();
-//    }
-//}
+Console.WriteLine($"new UniquePasswordGenerator(8, true, true).Generate() - {new PasswordGenerator(8, true, true).Generate()}");
+Console.WriteLine($"new SecurePasswordGenerator(8, true, true, true).Generate() - {new SecurePasswordGenerator(8, true, true, true).Generate()}");
 
 #endregion
 
@@ -241,8 +97,14 @@
 
 // Nimani yashiriladi -
 //
-// Service - asosiy modellarni va taqiqlangan methodlar
+// Service - asosiy modellarni va tashqaridan ishlatilishi ta'qiqlangan methodlarni
 // Model - fieldlar
+
+
+// Nega yashirish kerak
+
+
+// Model -  Invalid qiymatli fieldlar - borligiga ta'sir qiladi
 
 // Encapsulation dan foydalanish usullari
 //- `Access Modifiers` - `public`, `private`, `protected`, `internal` modifiers
@@ -251,40 +113,23 @@
 //- `Data Hiding` - hiding internal data and providing public methods to interact with
 //- `Encapsulating Complex Behavior` - grouping related behavior and providing well-
 
+var generator = new UniquePasswordGenerator();
+Console.WriteLine();
 
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
 
+// generator.Clear();  - bu method public bo'lganligi uchun muammo keltirib chiqarish ehtimoli bor, chunki tashqaridan ishlatilishi mumkin, uni private qilish kerak
 
-//var planner = new Planner();
-
-//var user = new User("John", "test@mgmail.com", 32);
-
-//user._emailAddress = "";
-
-//using System.Text;
-//using N14;
-
-//var generator = new PasswordGenerator();
-
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-
-////generator.Clear();
-
-//// Do something
-
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
-//Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
+Console.WriteLine(generator.Generate());
 
 // Access Modifier
 
@@ -298,47 +143,22 @@
 // internal protected - internal or protected
 // private protected - internal and protected
 
-//planner.DailyEvents[""] = 
-
-// Model -  Invalid qiymatli fieldlar - borligiga ta'sir qiladi
-
-using System.Text.RegularExpressions;
-using Library;
-using N14;
-
-var teachingSytem = new TeachingSystem();
+var teachingSystem = new TeachingSystem();
 var onlineTeachingSystem = new OnlineTeachingSystem();
+
 var validator = new Validator();
 
 // public
-teachingSytem.DisplayCourses();
+teachingSystem.DisplayCourses();
 
 // protected
 onlineTeachingSystem.DisplayPlans();
 
 // private
-//teachingSytem.DisplayBalance(); // invisible
-teachingSytem.SendStatisticsToBoss("sdfsdf");
+// teachingSystem.DisplayBalance(); // invisible - private
+teachingSystem.SendStatisticsToBoss("sdfsdf");
 
 // internal
-//validator.Regex = new Regex("234234"); // invisible
-
-public class SuperValidator : Validator
-{
-    // internal or protected
-    public SuperValidator()
-    {
-        EmailAddressRegex = new Regex("678"); // tezroq ishlaydigan regex
-
-        // private protected
-        //FirstNameRegex = new Regex("678");
-    }
-}
-
-
-
-//teachingSytem.PlanOtherCourses() // not visible
-
-
+//validator.Regex = new Regex("234234"); // invisible - internal
 
 #endregion

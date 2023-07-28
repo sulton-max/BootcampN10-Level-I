@@ -11,7 +11,6 @@ namespace Library
         public Test()
         {
             var validor = new Validator();
-            validor.first
         }
     }
 }
