@@ -35,9 +35,7 @@ var initOnlyUser = new N16.InitOnlyProperty.User("")
 //initOnlyUser.Name = ""; // invalid
 Console.WriteLine(initOnlyUser.Name);
 
-
 //initOnlyUser.Name = "Test"; // invalid - can't set init only property
-
 
 // user.DoSomething(valueB: 10, valueA: 20);
 
