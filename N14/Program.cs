@@ -138,27 +138,27 @@ Console.WriteLine(generator.Generate());
 // private - faqat tip uchun ochiq
 // internal - faqat project uchun ochiq
 // internal protected - faqat project uchun yoki child tip uchun ochiq
-// private protected - faqat tip uchun yoki child uchun ochiq
+// private protected - faqat project ichidagi childlar uchun ochiq
 
-// internal protected - internal or protected
-// private protected - internal and protected
+// internal protected - internal or protected - 
+// private protected - internal and protected - 
 
 var teachingSystem = new TeachingSystem();
 var onlineTeachingSystem = new OnlineTeachingSystem();
 
 var validator = new Validator();
 
-// public
+// public - hamma tip, field va boshqalarga ishlaydi
 teachingSystem.DisplayCourses();
 
-// protected
+// protected - voris olgan tiplarda murojaat qilsa bo'ladi
 onlineTeachingSystem.DisplayPlans();
 
-// private
+// private - faqat tip ichida murojaat qilish mumkin
 // teachingSystem.DisplayBalance(); // invisible - private
 teachingSystem.SendStatisticsToBoss("sdfsdf");
 
-// internal
+// internal - faqat project ichida murojaat qilish mumkin
 //validator.Regex = new Regex("234234"); // invisible - internal
 
 #endregion
