@@ -41,7 +41,7 @@ Console.WriteLine(circle.CalculateArea());
 
 #endregion
 
-#region 
+#region
 
 // Default Constructor
 var passwordGenerator = new PasswordGenerator();
