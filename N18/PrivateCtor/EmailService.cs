@@ -15,8 +15,11 @@ namespace N18.PrivateCtor
     {
         private static EmailService _instance;
 
+        public string CredentialEmail { get; private set; }
+
         private EmailService()
         {
+            CredentialEmail = string.Empty;
         }
 
         public static EmailService GetInstance()
