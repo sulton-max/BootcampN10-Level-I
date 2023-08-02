@@ -4,7 +4,6 @@ using N17.DefaultCtor;
 using N17.NormalClass;
 using N17.ParameterizedCtor;
 using N17.SealedClass;
-using static System.Net.Mime.MediaTypeNames;
 
 #region Class Types
 
