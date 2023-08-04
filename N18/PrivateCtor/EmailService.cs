@@ -22,7 +22,7 @@ namespace N18.PrivateCtor
             CredentialEmail = string.Empty;
         }
 
-        public static EmailService GetInstance()
+        public static EmailService GetInstance() 
         {
             if (_instance is null)
                 _instance = new EmailService();

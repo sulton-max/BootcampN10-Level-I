@@ -22,14 +22,9 @@ var managementB = new UltimateLibraryManagement(admin);
 // Singleton object - logika ko'pgina objectlarda farq qilmasa
 // Multiple object - agar logika yoki ma'lumot har bitta objectda har xil bo'lsa
 
-new Guid()
-
 var emailService = EmailService.GetInstance();
 var emailServiceA = EmailService.GetInstance();
 var emailServiceB = EmailService.GetInstance();
 var emailServiceC = EmailService.GetInstance();
-
-
-emailService.CredentialEmail
 
 #endregion
