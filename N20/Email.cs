@@ -26,7 +26,6 @@ public class AlertEmail : IEmail, IClassifiedInformation
     {
         throw new NotImplementedException();
     }
-
 }
 
 public class NotificationEmail : IEmail

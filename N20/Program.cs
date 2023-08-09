@@ -7,12 +7,14 @@ using System.Net.Mail;
 
 // Implement - inheritance dan farqi - e'lon qilingan methodni asosiy logikasini yozish
 
-//
-// var emailService = new EmailService();
-// var smsService = new SmsService();
-// var registrationService = new RegistrationService();
-//
-// var accountService = new AccountService(smsService, registrationService);
+var emailService = new EmailService();
+var smsService = new SmsService();
+var registrationService = new RegistrationService();
+
+// Abstraction
+// Loose Coupling - biror vazifani bajarishda aynan bitta type/instance ga bog'lanib qolmaslik
+
+var accountService = new AccountService(smsService, registrationService);
 
 var c = new C();
 c.DoSomething()

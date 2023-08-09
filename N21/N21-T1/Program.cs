@@ -1,4 +1,11 @@
-﻿public class MyList<T>
+﻿var list = new MyList<int>();
+list.Add(10);
+list.Add(10);
+list.Add(10);
+
+list.AddRange(new[] {1,2,3});
+
+public class MyList<T>
 {
     private T[] _items = new T[2];
     private long _lastIndex = 0;
@@ -7,7 +14,7 @@
     {
         EnsureCapacity();
 
-        _items[_lastIndex] = item;
+        _items[_lastIndex++] = item;
     }
 
     public void AddRange(IEnumerable<T> items)
@@ -15,26 +22,26 @@
         EnsureCapacity((uint)items.Count());
 
         foreach (var item in items)
-            Add(item);
+            _items[_lastIndex++] = item;
     }
 
     private void EnsureCapacity(uint additionalCapacity = 1)
     {
-        if (_lastIndex + additionalCapacity < _items.Length - 1) return;
+        if (_lastIndex + additionalCapacity < _items.Length) return;
 
-        var newCapacity = GetNextSize(additionalCapacity);
+        var newCapacity = GetNextSize((uint)_lastIndex + additionalCapacity);
         var newArray = new T[newCapacity];
         Array.Copy(_items, newArray, _items.Length);
         _items = newArray;
     }
 
-    private int GetNextSize(in uint newItemsSize)
+    private uint GetNextSize(in uint desiredItemSize)
     {
-        var newCapacity = _items.Length;
+        var newCapacity = desiredItemSize;
         do
         {
             newCapacity *= 2;
-        } while (newCapacity < newItemsSize);
+        } while (newCapacity < desiredItemSize);
 
         return newCapacity;
     }
