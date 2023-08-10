@@ -49,6 +49,14 @@ Console.WriteLine();
 Console.WriteLine("Intersect result : ");
 aggregator.Intersect(listA, listB).ForEach(Console.WriteLine);
 
+Console.WriteLine();
+Console.WriteLine("Except result : ");
+aggregator.Except(listA, listB).ForEach(Console.WriteLine);
+
+Console.WriteLine();
+Console.WriteLine("Union result : ");
+aggregator.Union(listA, listB).ForEach(Console.WriteLine);
+
 public interface ICollectionAggregator
 {
     List<T> Concat<T>(in List<T> listA, in List<T> listB);
@@ -83,12 +91,24 @@ public class CollectionAggregator : ICollectionAggregator
 
     public List<T> Except<T>(in List<T> listA, in List<T> listB)
     {
-        throw new NotImplementedException();
+        var list = new List<T>();
+        foreach(var itemA in listA)
+            if (!listB.Contains(itemA))
+                list.Add(itemA);
+
+        return list;
     }
 
     public List<T> Union<T>(in List<T> listA, in List<T> listB)
     {
-        throw new NotImplementedException();
+        var list = new List<T>();
+        list.AddRange(listA);
+
+        foreach(var itemB in listB)
+            if (!list.Contains(itemB))
+                list.Add(itemB);
+
+        return list;
     }
 }
 
