@@ -17,6 +17,8 @@
 // code
 
 
+using N12_HT1;
+
 var user = new User
 {
     FirstName = "John",
@@ -36,55 +38,58 @@ Console.WriteLine(user.FullName);
 // get - doimiy hisoblash
 // set - tagidagi ma'lumotlari o'zgarganda hisoblash 
 
-public class User
+namespace N12_HT1
 {
-    public string _firstName;
-    public string _lastName;
-    public string _middleName;
-
-    public string FirstName
+    public class User
     {
-        get => _firstName;
-        set
+        public string _firstName;
+        public string _lastName;
+        public string _middleName;
+
+        public string FirstName
         {
-            _firstName = value;
-            CalculateFullName();
+            get => _firstName;
+            set
+            {
+                _firstName = value;
+                CalculateFullName();
+            }
         }
-    }
 
-    public string LastName
-    {
-        get => _lastName;
-        set
+        public string LastName
         {
-            _lastName = value;
+            get => _lastName;
+            set
+            {
+                _lastName = value;
 
 
 
-            CalculateFullName();
+                CalculateFullName();
+            }
         }
-    }
 
-    public string MiddleName
-    {
-        get => _middleName;
-        set
+        public string MiddleName
         {
-            _middleName = value;
-            CalculateFullName();
+            get => _middleName;
+            set
+            {
+                _middleName = value;
+                CalculateFullName();
+            }
         }
-    }
 
-    public string _fullName;
+        public string _fullName;
 
-    public void CalculateFullName()
-    {
-        _fullName = $"{FirstName} {LastName} {MiddleName}";
-    }
+        public void CalculateFullName()
+        {
+            _fullName = $"{FirstName} {LastName} {MiddleName}";
+        }
 
-    public string FullName
-    {
-        get => _fullName;
+        public string FullName
+        {
+            get => _fullName;
+        }
     }
 }
 

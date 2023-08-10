@@ -1,4 +1,6 @@
-﻿public class UniquePasswordGenerator
+﻿namespace N14.Encapsulation;
+
+public class UniquePasswordGenerator
 {
     public List<string> Passwords;
 

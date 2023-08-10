@@ -40,8 +40,9 @@
 // - Display methodi
 //     - foydalanuvchilarni ekranga chiqarsin
 
-
 using System.Text.RegularExpressions;
+
+namespace N20_T1;
 
 public class User
 {

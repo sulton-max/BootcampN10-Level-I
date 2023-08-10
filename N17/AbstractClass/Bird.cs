@@ -1,4 +1,6 @@
-﻿public class Bird : Animal
+﻿namespace N17.AbstractClass;
+
+public class Bird : Animal
 {
     public override string GetSound()
     {

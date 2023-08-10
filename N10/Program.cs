@@ -102,6 +102,7 @@
 
 //var obj = new class
 using System.Runtime.InteropServices;
+using N10;
 
 var user = new User("John");
 
@@ -125,58 +126,61 @@ GCHandle handleB = GCHandle.Alloc(test.TestB, GCHandleType.Pinned);
 IntPtr pointerB = handleB.AddrOfPinnedObject();
 Console.WriteLine(pointerB.ToString());
 
-// Service
-public class AirportTerminal
+namespace N10
 {
-    // Member - data, behavior
-
-    // Data - ma'lumotlar
-    // Field - maydon
-    public Queue<User> _users = new Queue<User>();
-
-    // Behavior - hatti-harakati
-    // Method - metod
-    // Parameter - 
-    // Argument - 
-    // Return Type - 
-    // Body - 
-    // Name - 
-    // void - hech nima qaytarmaydigan
-    public void Add(User user)
+    // Service
+    public class AirportTerminal
     {
-        _users.Enqueue(user);
-    }
+        // Member - data, behavior
 
-    public void Display()
-    {
-        foreach (var user in _users)
-            Console.WriteLine(user.FirstName);
+        // Data - ma'lumotlar
+        // Field - maydon
+        public Queue<User> _users = new Queue<User>();
+
+        // Behavior - hatti-harakati
+        // Method - metod
+        // Parameter - 
+        // Argument - 
+        // Return Type - 
+        // Body - 
+        // Name - 
+        // void - hech nima qaytarmaydigan
+        public void Add(User user)
+        {
+            _users.Enqueue(user);
+        }
+
+        public void Display()
+        {
+            foreach (var user in _users)
+                Console.WriteLine(user.FirstName);
+        }
     }
-}
 
 // Model
-public class User
-{
-    public User(string firstName)
+    public class User
     {
-        FirstName = firstName;
+        public User(string firstName)
+        {
+            FirstName = firstName;
+        }
+
+        public string FirstName { get; set; }
     }
 
-    public string FirstName { get; set; }
-}
-
-public class Test
-{
-    public Test(string testA, string testB)
+    public class Test
     {
-        TestA = testA;
-        TestB = testB;
+        public Test(string testA, string testB)
+        {
+            TestA = testA;
+            TestB = testB;
+        }
+
+        public string TestB { get; set; }
+        public string TestA { get; set; }
     }
 
-    public string TestB { get; set; }
-    public string TestA { get; set; }
+
+
+    #endregion
 }
-
-
-
-#endregion

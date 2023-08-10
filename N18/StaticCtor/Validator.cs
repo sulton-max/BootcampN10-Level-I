@@ -1,6 +1,9 @@
 ﻿using System.Text.RegularExpressions;
+
 //Console.WriteLine(Validator.IsValidName(""));
 
+
+namespace N18.StaticCtor;
 
 public static class Validator
 {

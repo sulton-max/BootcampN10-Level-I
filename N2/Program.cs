@@ -1,6 +1,6 @@
 ﻿#region Primitive types
 
-using System.Runtime.InteropServices;
+using N2;
 
 bool hasMoney = true;
 
@@ -271,7 +271,10 @@ for (var index = 0; index < 3; index++)
 
 #endregion
 
-public class User
+namespace N2
 {
-    public string Name { get; set; }
+    public class User
+    {
+        public string Name { get; set; }
+    }
 }

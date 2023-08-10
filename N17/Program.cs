@@ -1,9 +1,11 @@
 ﻿using System.Runtime.InteropServices;
+using N17.AbstractClass;
 using N17.CopyCtor;
 using N17.DefaultCtor;
 using N17.NormalClass;
 using N17.ParameterizedCtor;
 using N17.SealedClass;
+using N17.StaticClass;
 
 #region Class Types
 

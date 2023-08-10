@@ -10,8 +10,8 @@
 // Equals logikasi
 // Reference tiplar uchun - address bo'yicha
 // Value tiplar uchun - qiymat bo'yicha
-
 using System.Text.RegularExpressions;
+using N12;
 
 var userA = new User
 {
@@ -95,107 +95,110 @@ Console.WriteLine(userD);
 var animal = new Animal();
 animal.Name = "6789"; // Format exception
 
-public class Animal
+namespace N12
 {
-    // Data
-
-    // Field - ma'lumot saqlaydigan member
-    // public string Name;
-
-    // Auto Property - { get; set } qilib e'lon qiligan property - tagida ishlaydigan field automatic generate bo'ladi
-    // Property - get va set operatsiyalari uchun logikasi bor bo'lgan member
-
-    public string _name;
-
-    // eski usul
-    // public void SetName(string value)
-    // {
-    //     _name = value;
-    // }
-
-    // public string GetName()
-    // {
-    //     return _name;
-    // }
-
-
-    //public string FirstName;
-
-    public string _firstName;
-
-    public string FirstName { get => _firstName; set => _firstName = value; }
-
-    public string LastName;
-    public string MiddleName;
-    //public string FullName
-
-    // get 
-    // set 
-
-    public string FullName
+    public class Animal
     {
-        get => $"{FirstName} {LastName} {MiddleName}";
-    }
+        // Data
 
-    //public string GetFullName()
-    //{
-    //    //return FirstName + " " + LastName + " " + MiddleName;
-    //    //return $"{FirstName} {LastName} {MiddleName}";
-    //    //return string.Join(' ', new[] {FirstName, LastName, MiddleName});
-    //}
+        // Field - ma'lumot saqlaydigan member
+        // public string Name;
 
-    public string Name
-    {
-        get 
-        { 
-            return _name; 
-        }
-        set
+        // Auto Property - { get; set } qilib e'lon qiligan property - tagida ishlaydigan field automatic generate bo'ladi
+        // Property - get va set operatsiyalari uchun logikasi bor bo'lgan member
+
+        public string _name;
+
+        // eski usul
+        // public void SetName(string value)
+        // {
+        //     _name = value;
+        // }
+
+        // public string GetName()
+        // {
+        //     return _name;
+        // }
+
+
+        //public string FirstName;
+
+        public string _firstName;
+
+        public string FirstName { get => _firstName; set => _firstName = value; }
+
+        public string LastName;
+        public string MiddleName;
+        //public string FullName
+
+        // get 
+        // set 
+
+        public string FullName
         {
-            if (Regex.IsMatch(value, "^[a-zA-Z]+$"))
-                _name = value;
-            else
-                throw new FormatException("Animal nomi sondan iborat G`ishtmat");
+            get => $"{FirstName} {LastName} {MiddleName}";
         }
+
+        //public string GetFullName()
+        //{
+        //    //return FirstName + " " + LastName + " " + MiddleName;
+        //    //return $"{FirstName} {LastName} {MiddleName}";
+        //    //return string.Join(' ', new[] {FirstName, LastName, MiddleName});
+        //}
+
+        public string Name
+        {
+            get 
+            { 
+                return _name; 
+            }
+            set
+            {
+                if (Regex.IsMatch(value, "^[a-zA-Z]+$"))
+                    _name = value;
+                else
+                    throw new FormatException("Animal nomi sondan iborat G`ishtmat");
+            }
+        }
+
+        // Behavior
     }
 
-    // Behavior
-}
+    #endregion
 
-#endregion
-
-public class Car
-{
-    public int Age;
-}
-
-public class User
-{
-    public string FirstName;
-    public string LastName;
-    public int Age;
-
-    public override bool Equals(object? obj)
+    public class Car
     {
-        if (obj is User user)
-            return this.GetHashCode() == user.GetHashCode();
-        else if (obj is Car car)
-            return this.Age == car.Age;
-        else if (obj is int age)
-            return this.Age == age;
-
-        return false;
+        public int Age;
     }
 
-    public override int GetHashCode()
+    public class User
     {
-        return FirstName.GetHashCode()
-               + LastName.GetHashCode()
-               + Age.GetHashCode();
-    }
+        public string FirstName;
+        public string LastName;
+        public int Age;
 
-    public override string ToString()
-    {
-        return $"Firstname - {FirstName} LastName - {LastName} Age - {Age}";
+        public override bool Equals(object? obj)
+        {
+            if (obj is User user)
+                return this.GetHashCode() == user.GetHashCode();
+            else if (obj is Car car)
+                return this.Age == car.Age;
+            else if (obj is int age)
+                return this.Age == age;
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return FirstName.GetHashCode()
+                   + LastName.GetHashCode()
+                   + Age.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"Firstname - {FirstName} LastName - {LastName} Age - {Age}";
+        }
     }
 }

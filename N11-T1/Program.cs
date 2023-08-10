@@ -9,6 +9,8 @@
 
 // KISS - Keep It Stupid Simple
 
+using N11_T1;
+
 var document = new Document
 {
     Content = "Lorem ipsum dolor sit amet consectetursdfsdfsdfsdfsdfsdfsdfsdfsd adipisicing elit. quaerat est quas commodi quibusdam labore, nihil doloribus quam temporibus inventore optio expedita consectetur voluptatem QUIDEM nulla soluta earum. Numquam rem alias minima culpa iste distinctio. Eum similique est consequuntur minus, odio nisi recusandae iure asperiores facere, reiciendis voluptate maiores! Repellat, dolorum!"
@@ -18,86 +20,89 @@ var analyzer = new DocumentAnalyzer();
 analyzer.Analyze(document);
 Console.WriteLine(document.Score);
 
-// Model
-// Document modelini yaratish(Content, Score )
-public class Document
+namespace N11_T1
 {
-    public string Content;
-    public int Score = 100;
-}
+    // Model
+// Document modelini yaratish(Content, Score )
+    public class Document
+    {
+        public string Content;
+        public int Score = 100;
+    }
 
 // Service
 // DocumentAnalyzer servicini yaratish( Analiz )
-public class DocumentAnalyzer
-{
-    public int Analyze(Document document)
+    public class DocumentAnalyzer
     {
-        CalcalateIfLessThan500(document);
-        CalculateIfHasExtremeDoubleWords(document);
-        CalculateIfFirstWordCapital(document);
-        CalculateIfOtherWordsIsLower(document);
-        CalculateIfAllWordsLessThan20Chars(document);
-
-        return document.Score;
-    }
-
-    public void CalcalateIfLessThan500(Document document)
-    {
-        var words = document.Content.Split(',', '.', '!', '?');
-        if (words.Length < 500)
-            document.Score -= 5;
-    }
-
-    public void CalculateIfHasExtremeDoubleWords(Document document)
-    {
-        var words = document.Content.Split(',', '.', '!', '?', ' ');
-        var distinctWords = words.Distinct().ToList();
-        foreach (var distinctWord in distinctWords)
+        public int Analyze(Document document)
         {
-            var count = 0;
+            CalcalateIfLessThan500(document);
+            CalculateIfHasExtremeDoubleWords(document);
+            CalculateIfFirstWordCapital(document);
+            CalculateIfOtherWordsIsLower(document);
+            CalculateIfAllWordsLessThan20Chars(document);
 
-            foreach (var word in words)
-                if (distinctWord == word)
-                    count++;
+            return document.Score;
+        }
 
-            if (words.Length / 5 < count)
+        public void CalcalateIfLessThan500(Document document)
+        {
+            var words = document.Content.Split(',', '.', '!', '?');
+            if (words.Length < 500)
                 document.Score -= 5;
         }
-    }
 
-    public void CalculateIfFirstWordCapital(Document document)
-    {
-        var sentences = document.Content.Split('.', '!', '?');
-        foreach (var sentence in sentences)
+        public void CalculateIfHasExtremeDoubleWords(Document document)
         {
-            var words = sentence.Trim().Split(',', ' ');
-            if (!string.IsNullOrWhiteSpace(words[0])
-                && words[0] != words[0].Substring(0, 1).ToUpper() +
-                        words[0].Substring(1).ToLower())
-                document.Score -= 5;
-        }
-    }
-
-    public void CalculateIfOtherWordsIsLower(Document document)
-    {
-        var sentences = document.Content.Split('.', '!', '?');
-        foreach (var sentence in sentences)
-        {
-            var words = sentence.Trim().Split(',', ' ');
-            for (var index = 1; index < words.Length; index++)
+            var words = document.Content.Split(',', '.', '!', '?', ' ');
+            var distinctWords = words.Distinct().ToList();
+            foreach (var distinctWord in distinctWords)
             {
-                if (!string.IsNullOrWhiteSpace(words[index])
-                    && words[index] != words[index].ToLower())
+                var count = 0;
+
+                foreach (var word in words)
+                    if (distinctWord == word)
+                        count++;
+
+                if (words.Length / 5 < count)
                     document.Score -= 5;
             }
         }
-    }
 
-    public void CalculateIfAllWordsLessThan20Chars(Document document)
-    {
-        var words = document.Content.Split(',', '.', '!', '?', ' ');
-        foreach (var word in words)
-            if (word.Trim().Length > 20)
-                document.Score -= 5;
+        public void CalculateIfFirstWordCapital(Document document)
+        {
+            var sentences = document.Content.Split('.', '!', '?');
+            foreach (var sentence in sentences)
+            {
+                var words = sentence.Trim().Split(',', ' ');
+                if (!string.IsNullOrWhiteSpace(words[0])
+                    && words[0] != words[0].Substring(0, 1).ToUpper() +
+                    words[0].Substring(1).ToLower())
+                    document.Score -= 5;
+            }
+        }
+
+        public void CalculateIfOtherWordsIsLower(Document document)
+        {
+            var sentences = document.Content.Split('.', '!', '?');
+            foreach (var sentence in sentences)
+            {
+                var words = sentence.Trim().Split(',', ' ');
+                for (var index = 1; index < words.Length; index++)
+                {
+                    if (!string.IsNullOrWhiteSpace(words[index])
+                        && words[index] != words[index].ToLower())
+                        document.Score -= 5;
+                }
+            }
+        }
+
+        public void CalculateIfAllWordsLessThan20Chars(Document document)
+        {
+            var words = document.Content.Split(',', '.', '!', '?', ' ');
+            foreach (var word in words)
+                if (word.Trim().Length > 20)
+                    document.Score -= 5;
+        }
     }
 }

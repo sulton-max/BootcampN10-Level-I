@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
-using N19;
+
+namespace N19;
 
 public static class StaticType
 {

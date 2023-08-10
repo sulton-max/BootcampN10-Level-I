@@ -26,8 +26,10 @@
 
 
 // code
+
 using System.Net;
 using System.Net.Mail;
+using N16_T1;
 
 var emailService = new EmailService("sultonbek.rakhimov.recovery@gmail.com", "szabguksrhwsbtie");
 
@@ -40,27 +42,30 @@ emailService.SendEmail(emailAddress, userName);
 
 //emailSender.CredentialPassword = "234324";
 
-public class EmailService
+namespace N16_T1
 {
-    public string CredentialAddress { get; init; }
-    public string CredentialPassword { get; init; }
-
-    public EmailService(string address, string password)
+    public class EmailService
     {
-        CredentialAddress = address;
-        CredentialPassword = password;
-    }
+        public string CredentialAddress { get; init; }
+        public string CredentialPassword { get; init; }
 
-    public void SendEmail(string to, string userName)
-    {
-        var mail = new MailMessage("g`isthmat@gmail.com", to);
-        mail.Subject = "Siz muvaffaqiyatli registratsiyadan o'tdingiz";
-        mail.Body = "Hurmatli {{User}}, siz sistemadan muvaffaqiyatli o'tdingiz".Replace("{{User}}", userName);
+        public EmailService(string address, string password)
+        {
+            CredentialAddress = address;
+            CredentialPassword = password;
+        }
 
-        var smtpClient = new SmtpClient("smtp.gmail.com", 587); // Replace with your SMTP server address and port
-        smtpClient.Credentials = new NetworkCredential(CredentialAddress, CredentialPassword);
-        smtpClient.EnableSsl = true;
+        public void SendEmail(string to, string userName)
+        {
+            var mail = new MailMessage("g`isthmat@gmail.com", to);
+            mail.Subject = "Siz muvaffaqiyatli registratsiyadan o'tdingiz";
+            mail.Body = "Hurmatli {{User}}, siz sistemadan muvaffaqiyatli o'tdingiz".Replace("{{User}}", userName);
 
-        smtpClient.Send(mail);
+            var smtpClient = new SmtpClient("smtp.gmail.com", 587); // Replace with your SMTP server address and port
+            smtpClient.Credentials = new NetworkCredential(CredentialAddress, CredentialPassword);
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mail);
+        }
     }
 }

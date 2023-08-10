@@ -258,5 +258,4 @@
 // where - generics
 // while - loop
 
-
-
+// var list = new List<int>();

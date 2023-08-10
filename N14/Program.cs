@@ -1,5 +1,6 @@
 ﻿using Library;
 using N14;
+using N14.Encapsulation;
 using N14.OverridingExample;
 using PasswordGenerator = N14.OverridingExample.PasswordGenerator;
 

@@ -10,6 +10,9 @@
 // method - PascalCase
 
 // firstName, lastName, age o'zgaruvchilarini e'lon qilish
+
+using N10_T1;
+
 var firstName = default(string);
 var lastName = default(string);
 var age = default(byte);
@@ -38,10 +41,13 @@ Console.WriteLine($"LastName : { user.LastName}");
 Console.WriteLine($"Age : { user.Age}");
 
 // foydalanuvchi uchun User tipini yaratish
-public class User
+namespace N10_T1
 {
-    // User tipida FirstName, LastName, Age fieldlarni bo'lsin
-    public string FirstName;
-    public string LastName;
-    public byte Age;
+    public class User
+    {
+        // User tipida FirstName, LastName, Age fieldlarni bo'lsin
+        public string FirstName;
+        public string LastName;
+        public byte Age;
+    }
 }

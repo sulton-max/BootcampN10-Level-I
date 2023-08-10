@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Mail;
+using N20;
 
 // Inteface - klassdan farqi - multiple inheritance o'rnida ishlaydi
 // nomida - I bilan boshlanadi
@@ -19,125 +20,127 @@ var accountService = new AccountService(smsService, registrationService);
 var c = new C();
 c.DoSomething()
 
-((A)c).DoSomething();
+    ((A)c).DoSomething();
 ((B)c).DoSomething();
 
-public interface A
+namespace N20
 {
-    string DoSomething();
-}
-
-public interface B
-{
-    string DoSomething();
-}
-
-public class C : A, B
-{
-    string A.DoSomething()
+    public interface A
     {
-        Console.WriteLine("DoSomething from A");
+        string DoSomething();
     }
 
-    protected string DoSomething()
+    public interface B
     {
-        Console.WriteLine("DoSomething from B");
-    }
-}
-
-
-public interface INotificationService
-{
-    bool Send(User user, string subject, string body);
-}
-
-public interface IRegistrationService
-{
-    User Register(string emailAddress, string password);
-}
-
-public interface IAccountService
-{
-    bool Create(string emailAddress, string password);
-}
-
-public interface IEmailService
-{
-    IEnumerable<object> SearchForUser(string emailAddress);
-}
-
-public class EmailService : INotificationService, IEmailService
-{
-    public SmtpClient SmtpClientInstance { get; init; }
-
-    public EmailService()
-    {
-        SmtpClientInstance = new SmtpClient("smtp.gmail.com", 587); // Replace with your SMTP server address and port
-        SmtpClientInstance.Credentials = new NetworkCredential("sultonbek.rakhimov.recovery@gmail.com", "szabguksrhwsbtie");
-        SmtpClientInstance.EnableSsl = true;
+        string DoSomething();
     }
 
-    public bool Send(User user, string subject, string body)
+    public class C : A, B
     {
-        var mail = new MailMessage("g`isthmat@gmail.com", user.EmailAddress);
-        mail.Subject = subject;
-        mail.Body = body;
+        string A.DoSomething()
+        {
+            Console.WriteLine("DoSomething from A");
+        }
 
-        SmtpClientInstance.Send(mail);
-
-        return true;
+        protected string DoSomething()
+        {
+            Console.WriteLine("DoSomething from B");
+        }
     }
 
-    public IEnumerable<object> SearchForUser(string emailAddress)
+
+    public interface INotificationService
     {
-        throw new NotImplementedException();
-    }
-}
-
-public class SmsService : INotificationService
-{
-    public bool Send(User user, string subject, string body)
-    {
-        throw new NotImplementedException();
-    }
-}
-
-public class RegistrationService : IRegistrationService
-{
-    private List<User> _users = new();
-
-    public User Register(string emailAddress, string password)
-    {
-        throw new NotImplementedException();
-    }
-}
-
-public class AccountService : IAccountService
-{
-    private readonly INotificationService _notificationService;
-    private readonly IRegistrationService _registrationService;
-
-    public AccountService(INotificationService notificationService, IRegistrationService registrationService)
-    {
-        _notificationService = notificationService;
-        _registrationService = registrationService;
+        bool Send(User user, string subject, string body);
     }
 
-    public bool Create(string emailAddress, string password)
+    public interface IRegistrationService
     {
-        var newUser = _registrationService.Register(emailAddress, password);
-        if (newUser is not null)
-            return _notificationService.Send(newUser, "Welcome", "Welcome to our website");
-
-        return false;
+        User Register(string emailAddress, string password);
     }
-}
 
-public class User
-{
-    public string EmailAddress { get; set; }
-    public string Password { get; set; }
-}
+    public interface IAccountService
+    {
+        bool Create(string emailAddress, string password);
+    }
+
+    public interface IEmailService
+    {
+        IEnumerable<object> SearchForUser(string emailAddress);
+    }
+
+    public class EmailService : INotificationService, IEmailService
+    {
+        public SmtpClient SmtpClientInstance { get; init; }
+
+        public EmailService()
+        {
+            SmtpClientInstance = new SmtpClient("smtp.gmail.com", 587); // Replace with your SMTP server address and port
+            SmtpClientInstance.Credentials = new NetworkCredential("sultonbek.rakhimov.recovery@gmail.com", "szabguksrhwsbtie");
+            SmtpClientInstance.EnableSsl = true;
+        }
+
+        public bool Send(User user, string subject, string body)
+        {
+            var mail = new MailMessage("g`isthmat@gmail.com", user.EmailAddress);
+            mail.Subject = subject;
+            mail.Body = body;
+
+            SmtpClientInstance.Send(mail);
+
+            return true;
+        }
+
+        public IEnumerable<object> SearchForUser(string emailAddress)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class SmsService : INotificationService
+    {
+        public bool Send(User user, string subject, string body)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class RegistrationService : IRegistrationService
+    {
+        private List<User> _users = new();
+
+        public User Register(string emailAddress, string password)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class AccountService : IAccountService
+    {
+        private readonly INotificationService _notificationService;
+        private readonly IRegistrationService _registrationService;
+
+        public AccountService(INotificationService notificationService, IRegistrationService registrationService)
+        {
+            _notificationService = notificationService;
+            _registrationService = registrationService;
+        }
+
+        public bool Create(string emailAddress, string password)
+        {
+            var newUser = _registrationService.Register(emailAddress, password);
+            if (newUser is not null)
+                return _notificationService.Send(newUser, "Welcome", "Welcome to our website");
+
+            return false;
+        }
+    }
+
+    public class User
+    {
+        public string EmailAddress { get; set; }
+        public string Password { get; set; }
+    }
 
 
 // public interface IEntity
@@ -209,29 +212,30 @@ public class User
 // }
 
 
-public interface ITaskEvent
-{
-    string Name { get; }
-    int Priority { get; }
-}
-
-public class TaskItem : ITaskEvent
-{
-    public string Name { get; set; }
-
-
-    public int Priority { get; set; }
-
-    public void DoSomething()
+    public interface ITaskEvent
     {
+        string Name { get; }
+        int Priority { get; }
     }
-}
 
-public class EventItem : ITaskEvent
-{
-    public string Name { get; set; }
-    public int Priority { get; set; }
+    public class TaskItem : ITaskEvent
+    {
+        public string Name { get; set; }
 
 
-    public DateTime Date { get; set; }
+        public int Priority { get; set; }
+
+        public void DoSomething()
+        {
+        }
+    }
+
+    public class EventItem : ITaskEvent
+    {
+        public string Name { get; set; }
+        public int Priority { get; set; }
+
+
+        public DateTime Date { get; set; }
+    }
 }

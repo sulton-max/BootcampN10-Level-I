@@ -1,4 +1,6 @@
-﻿public static class MessageConstants
+﻿namespace N17.StaticClass;
+
+public static class MessageConstants
 {
     public const string UserToken = "{{User}}";
     public const string AppToken = "{{App}}";
@@ -7,4 +9,4 @@
     {
         return template.Replace(UserToken, "").Replace(AppToken, "");
     }
-}   
+}

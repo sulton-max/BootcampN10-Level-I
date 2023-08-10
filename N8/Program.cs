@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Numerics;
+using N8;
 
 #region Pattern matching
 
@@ -320,9 +321,12 @@ var dictionary =
 dictionary.Add("John", new User());
 dictionary.Add("john007", new User());
 
-public class User
+namespace N8
 {
-    public string FirstName { get; set; }
+    public class User
+    {
+        public string FirstName { get; set; }
+    }
 }
 
 #endregion

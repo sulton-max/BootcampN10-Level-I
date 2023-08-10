@@ -1,4 +1,6 @@
-﻿public interface IEmail
+﻿namespace N20;
+
+public interface IEmail
 {
     string SenderAddress { get; set; }
     string ReceiverAddress { get; set; }

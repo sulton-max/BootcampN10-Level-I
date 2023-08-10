@@ -1,6 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 using Library;
 
+namespace N14;
+
 public class SuperValidator : Validator
 {
     // internal or protected

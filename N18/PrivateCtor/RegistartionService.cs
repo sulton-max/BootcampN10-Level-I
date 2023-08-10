@@ -10,6 +10,8 @@
 
 
 
+namespace N18.PrivateCtor;
+
 public class RegistartionService
 {
     public bool Registratsiya(string username)

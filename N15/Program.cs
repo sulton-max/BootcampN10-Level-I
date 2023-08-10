@@ -7,7 +7,10 @@ var value = 1;
 var valueB = 1;
 var valueC = 1;
 
-public class Bird
+namespace N15
 {
+    public class Bird
+    {
 
+    }
 }

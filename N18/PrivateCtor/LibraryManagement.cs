@@ -8,6 +8,8 @@
 
 //Console.WriteLine(Validator.IsValidName(""));
 
+namespace N18.PrivateCtor;
+
 public class LibraryManagement
 {
     private List<object> Books = new List<object>();

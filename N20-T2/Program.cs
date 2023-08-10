@@ -1,4 +1,6 @@
-﻿public class MyList<T>
+﻿namespace N20_T2;
+
+public class MyList<T>
 {
     private T[] _items = new T[2];
     private long _lastIndex = 0;
