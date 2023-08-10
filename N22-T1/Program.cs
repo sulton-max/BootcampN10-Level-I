@@ -12,9 +12,22 @@ priorityQueue.Enqueue(new EventItem("Najot Quiz", DateTime.Now.AddHours(2)));
 priorityQueue.Enqueue(new EventItem("Sharpist Hackathon", DateTime.Now.AddDays(2)));
 priorityQueue.Enqueue(new EventItem("Exam", DateTime.Now.AddHours(5)));
 
-foreach(var item in priorityQueue)
-{
-    Console.WriteLine(item);
-}
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+// Console.WriteLine(priorityQueue.Dequeue());
+
+Console.WriteLine(priorityQueue.Peek());
+Console.WriteLine(priorityQueue.Peek());
+Console.WriteLine(priorityQueue.Peek());
+Console.WriteLine(priorityQueue.Peek());
+
+
+
 
 

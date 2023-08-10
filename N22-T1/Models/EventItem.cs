@@ -31,6 +31,6 @@ public class EventItem : ITaskEvent
 
     public override string ToString()
     {
-        return $"Name: {Name}, Date: {Date:g}";
+        return $"Name: {Name}, Date: {Date:g} Priority: {Priority}";
     }
 }

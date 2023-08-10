@@ -7,26 +7,61 @@ namespace N22_T1.Models;
 // Agar interfeysga generic parameter berilsa - generic methodlarni implement qilishi kerak bo'ladi
 // Agar interfeysga aniq tip parameter berilsa - o'sha tipdagi methodlarni implement qilishi kerak bo'ladi
 
-public class PriorityQueue<TEvent> : IEnumerable<TEvent>, IPriorityQueue<TEvent> where TEvent : ITaskEvent
+public class PriorityQueue<TItem> : IEnumerable<TItem>, IPriorityQueue<TItem> where TItem : ITaskEvent, ICloneable
 {
-    private readonly List<TEvent> _events = new();
+    private readonly List<TItem> _events = new();
 
-    public void Enqueue(TEvent eventItem)
+    public void Enqueue(TItem eventItem)
     {
         _events.Add(eventItem);
     }
 
-    public TEvent Dequeue()
+    public TItem Dequeue()
     {
-        throw new NotImplementedException();
+        var item= _events.Count > 0
+            ? _events.MaxBy(item => item.Priority)
+            : throw new InvalidOperationException("Queue is empty");
+
+        _events.Remove(item);
+        return item;
+
+        // Eski usul
+        // if (_events.Count == 0)
+        //     throw new InvalidOperationException("Queue is empty");
+        //
+        // var maxPriorityEvent = _events[0];
+        // foreach(var item in _events)
+        // {
+        //     if (item.Priority > maxPriorityEvent.Priority)
+        //         maxPriorityEvent = item;
+        // }
+        //
+        // _events.Remove(maxPriorityEvent);
+        // return maxPriorityEvent;
     }
 
-    public TEvent Peek()
+    public TItem Peek()
     {
-        throw new NotImplementedException();
+        return _events.Count > 0
+            ? _events.MaxBy(item => item.Priority)
+            : throw new InvalidOperationException("Queue is empty");
+
+        // Eski usul
+
+        // if (_events.Count == 0)
+        //     throw new InvalidOperationException("Queue is empty");
+        //
+        // var maxPriorityEvent = _events[0];
+        // foreach(var item in _events)
+        // {
+        //     if (item.Priority > maxPriorityEvent.Priority)
+        //         maxPriorityEvent = item;
+        // }
+        //
+        // return maxPriorityEvent;
     }
 
-    public IEnumerator<TEvent> GetEnumerator()
+    public IEnumerator<TItem> GetEnumerator()
     {
         return _events.GetEnumerator();
     }
