@@ -31,25 +31,41 @@ var laptops = new List<Laptop>
 // null value
 // var value = default(int?);
 
-var filter = new LaptopFilterModel("Asus", null, 14);
-var filteredLaptopsQuery = laptops.Where(laptop =>
-{
-    return laptop.Brand.Equals(filter.Brand)
-           && (filter.Price is null || laptop.Price == filter.Price)
-           && (filter.DisplaySize is null || laptop.DisplaySize == filter.DisplaySize);
-});
+//var filter = new LaptopFilterModel("Asus", null, 14);
+//var filteredLaptopsQuery = laptops.Where(laptop =>
+//{
+//    return laptop.Brand.Equals(filter.Brand)
+//           && (filter.Price is null || laptop.Price == filter.Price)
+//           && (filter.DisplaySize is null || laptop.DisplaySize == filter.DisplaySize);
+//});
 
-foreach (var laptop in filteredLaptopsQuery)
-    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
+//foreach (var laptop in filteredLaptopsQuery)
+//    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
 
-Console.WriteLine();
-laptops.Add(new("Asus", "ZenBook 14 Pro", 899, 14));
+//Console.WriteLine();
+//laptops.Add(new("Asus", "ZenBook 14 Pro", 899, 14));
 
-foreach (var laptop in filteredLaptopsQuery)
-    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
+//foreach (var laptop in filteredLaptopsQuery)
+//    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
 
 // Searching
 
+// Pagination
+// page size - sahifada nechta element borligi
+// page token - hozir qaysi sahifadaligimiz
+// total pages - umumiy nechta sahifa borligi
+
+var pageSize = 5;
+var pageToken = 0;
+var totalPages = laptops.Count / pageSize;
+
+while(pageToken++ < totalPages)
+{
+    Console.WriteLine(pageToken);
+    var response = laptops.Skip((pageToken - 1) * pageSize).Take(pageSize).ToList();
+    foreach(var item in response)
+        Console.WriteLine($"Brand - {item.Brand}, Model - {item.Model}, Price - {item.Price}, Display size - {item.DisplaySize}");
+}
 
 
 public class Laptop
