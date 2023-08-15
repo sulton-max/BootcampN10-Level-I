@@ -1,8 +1,4 @@
-﻿// Filtering
-
-using System.Text.Json.Serialization;
-
-var laptops = new List<Laptop>
+﻿var laptops = new List<Laptop>
 {
     new Laptop("Dell", "Inspiron 15", 799, 15),
     new Laptop("HP", "Pavilion 14", 699, 14),
@@ -26,27 +22,37 @@ var laptops = new List<Laptop>
     new Laptop("Dell", "Latitude 14", 899, 14)
 };
 
-// laptops[5].IsDeleted = true;
+#region Filtering
 
-// null value
-// var value = default(int?);
+//Console.WriteLine("Filter model :");
 
-//var filter = new LaptopFilterModel("Asus", null, 14);
-//var filteredLaptopsQuery = laptops.Where(laptop =>
-//{
-//    return laptop.Brand.Equals(filter.Brand)
-//           && (filter.Price is null || laptop.Price == filter.Price)
-//           && (filter.DisplaySize is null || laptop.DisplaySize == filter.DisplaySize);
-//});
+laptops[5].IsDeleted = true;
 
-//foreach (var laptop in filteredLaptopsQuery)
-//    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
+var initialQuery = laptops.Where(x => !x.IsDeleted);
 
-//Console.WriteLine();
+
+
+
+var filter = new LaptopFilterModel("Asus", null, 14);f
+var filteredLaptopsQuery = initialQuery.Where(laptop =>
+{
+    return laptop.Brand.Equals(filter.Brand)
+           && (filter.Price is null || laptop.Price == filter.Price)
+           && (filter.DisplaySize is null || laptop.DisplaySize == filter.DisplaySize);
+});
+
+//Console.WriteLine("Laptoplar boshlang'ich holati : ");
+foreach (var laptop in filteredLaptopsQuery)
+    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
+
+Console.WriteLine();
 //laptops.Add(new("Asus", "ZenBook 14 Pro", 899, 14));
+laptops[5].IsDeleted = false;
 
-//foreach (var laptop in filteredLaptopsQuery)
-//    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
+foreach (var laptop in filteredLaptopsQuery)
+    Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
+
+#endregion 
 
 // Searching
 
@@ -55,22 +61,21 @@ var laptops = new List<Laptop>
 // page token - hozir qaysi sahifadaligimiz
 // total pages - umumiy nechta sahifa borligi
 
-var pageSize = 5;
-var pageToken = 0;
-var totalPages = laptops.Count / pageSize;
+//var pageSize = 5;
+//var pageToken = 0;
+//var totalPages = laptops.Count / pageSize;
 
-while(pageToken++ < totalPages)
-{
-    Console.WriteLine(pageToken);
-    var response = laptops.Skip((pageToken - 1) * pageSize).Take(pageSize).ToList();
-    foreach(var item in response)
-        Console.WriteLine($"Brand - {item.Brand}, Model - {item.Model}, Price - {item.Price}, Display size - {item.DisplaySize}");
-}
-
+//while(pageToken++ < totalPages)
+//{
+//    Console.WriteLine(pageToken);
+//    var response = laptops.Skip((pageToken - 1) * pageSize).Take(pageSize).ToList();
+//    foreach(var item in response)
+//        Console.WriteLine($"Brand - {item.Brand}, Model - {item.Model}, Price - {item.Price}, Display size - {item.DisplaySize}");
+//}
 
 public class Laptop
 {
-    [JsonPropertyName("laptop-brand")] public string Brand { get; set; }
+    public string Brand { get; set; }
     public string Model { get; set; }
     public int Price { get; set; }
     public int DisplaySize { get; set; }
@@ -99,4 +104,12 @@ public class LaptopFilterModel
         Price = price;
         DisplaySize = displaySize;
     }
+}
+
+public class Employee
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int Salary { get; set; }
+    public int Kpi { get; set; }
 }
