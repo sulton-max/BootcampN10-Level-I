@@ -7,17 +7,20 @@ public class TaskItem : ITaskEvent
     public string Description { get; set; }
 
     private byte _priority;
+
     public byte Priority
     {
         get => _priority;
         private init
         {
-            if(value >= 1 && value <= 10)
+            if (value >= 1 && value <= 10)
             {
                 _priority = value;
             }
         }
     }
+
+
 
     public TaskItem(string name, string description, byte priority)
     {
@@ -26,6 +29,11 @@ public class TaskItem : ITaskEvent
         Description = description;
         Priority = priority;
     }
+
+    // public void Display()
+    // {
+    //     Console.WriteLine($"Id: {Id}, Name: {Name}, Priority: {Priority}");
+    // }
 
     public override string ToString()
     {

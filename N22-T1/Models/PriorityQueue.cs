@@ -7,6 +7,14 @@ namespace N22_T1.Models;
 // Agar interfeysga generic parameter berilsa - generic methodlarni implement qilishi kerak bo'ladi
 // Agar interfeysga aniq tip parameter berilsa - o'sha tipdagi methodlarni implement qilishi kerak bo'ladi
 
+public  class Test
+{
+    public static bool operator <(Test taskA, Test taskB)
+    {
+
+    }
+}
+
 public class PriorityQueue<TItem> : IEnumerable<TItem>, IPriorityQueue<TItem> where TItem : ITaskEvent, ICloneable
 {
     private readonly List<TItem> _events = new();
@@ -18,6 +26,8 @@ public class PriorityQueue<TItem> : IEnumerable<TItem>, IPriorityQueue<TItem> wh
 
     public TItem Dequeue()
     {
+        _events[0] >
+
         var item= _events.Count > 0
             ? _events.MaxBy(item => item.Priority)
             : throw new InvalidOperationException("Queue is empty");
