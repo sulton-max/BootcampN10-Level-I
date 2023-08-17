@@ -60,7 +60,13 @@ public class LoginModel
         return loginModel ? false : true;
     }
 
-    public List<string> GetErrors()
+    public static int operator +(int value, LoginModel model)
+    {
+        return 10;
+    }
+
+
+public List<string> GetErrors()
     {
         return _errorsList.Values.ToList();
     }

@@ -26,11 +26,15 @@ public class PriorityQueue<TItem> : IEnumerable<TItem>, IPriorityQueue<TItem> wh
 
     public TItem Dequeue()
     {
+        for()
+
         _events[0] >
 
-        var item= _events.Count > 0
-            ? _events.MaxBy(item => item.Priority)
-            : throw new InvalidOperationException("Queue is empty");
+
+        //
+        // var item= _events.Count > 0
+        //     ? _events.MaxBy(item => item.Priority)
+        //     : throw new InvalidOperationException("Queue is empty");
 
         _events.Remove(item);
         return item;
