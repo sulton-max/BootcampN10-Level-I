@@ -45,7 +45,6 @@ public static class EnumExtensions
         !string.IsNullOrWhiteSpace(value) && Enum.IsDefined(typeof(TEnum), value);
 
     // Null coalescing
-    //
     public static TEnum ToEnum<TEnum>(this string value) where TEnum : struct, Enum =>
         value?.IsDefined<TEnum>() ?? false
             ? Enum.Parse<TEnum>(value)

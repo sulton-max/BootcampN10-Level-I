@@ -93,6 +93,13 @@ var valueA = "Beginner";
 //     Console.WriteLine("Value is not defined in enum");
 // }
 
+var a = 10;
+var b = 20;
+a = a + b;
+a += b;
+
+
+
 string test = null;
 if (test.IsDefined<LanguageLevel>())
 {
