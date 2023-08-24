@@ -20,6 +20,7 @@ using N29.Services;
 
 var emailAddresses = new List<string>
 {
+    "sultonbek.rakhimov@gmail.com",
     "jasurabdulxaev@gmail.com",
     "abdura52.uz@gmail.com",
     "toshmurodovj13@gmail.com",
@@ -60,23 +61,40 @@ var emailAddresses = new List<string>
 var emailService = new EmailService();
 
 // Task 1 - userllar fayllar ochish
-var createFileTasks = emailAddresses.Select(user => Task.Run(() =>
+var list = new List<string>
 {
-    // var name = user.Substring(0, user.IndexOf('@'));
-    var fileStream = File.Create($"{user.ToLower()}.docx");
-    Console.WriteLine($"{user} ga fayl yaratildi");
-    return fileStream;
-}));
+    "https://docs.google.com/document/d/1RzdBy9elwCn6M1vkp5GhZxBfYKsE4LL4YMxWyYMpBjQ/edit",
+    "https://docs.google.com/document/d/1RzdBy9elwCn6M1vkp5GhZxBfYKsE4LL4YMxWyYMpBjQ/edit",
+    "https://docs.google.com/document/d/1RzdBy9elwCn6M1vkp5GhZxBfYKsE4LL4YMxWyYMpBjQ/edit",
+};
+
+Console.WriteLine($"Current thread Id - {Thread.CurrentThread.ManagedThreadId}");
+var createFileTasks = emailAddresses.Select(emailAddress =>
+{
+    Console.WriteLine($"Bu kod sinxron ishlaydi");
+    Console.WriteLine($"Current thread Id inside Select - {Thread.CurrentThread.ManagedThreadId}");
+
+    return Task.Run(() =>
+    {
+        Console.WriteLine($"Current thread Id inside Task.Run - {Thread.CurrentThread.ManagedThreadId}");
+        // var name = user.Substring(0, user.IndexOf('@'));
+        var fileStream = File.Create($"{emailAddress.ToLower()}.docx");
+        Console.WriteLine($"{emailAddress} ga fayl yaratildi");
+        return fileStream;
+    });
+});
 
 // Task 2 - userlarga email jo'natish
 var sendRegistrationEmailTasks = emailAddresses.Select(async emailAddress =>
 {
+    Console.WriteLine($"Current thread Id inside Select - {Environment.CurrentManagedThreadId}");
     var result = await emailService.SendAsync(emailAddress, "Confirm you account", "Enter to this link");
+    Console.WriteLine($"Current thread Id inside Select - {Environment.CurrentManagedThreadId}");
     Console.WriteLine($"{emailAddress} ga email jo'natish resultati - {result}");
     return result;
 });
 
-// Task 3 - userlar fayllarini tayyorlash
+// // Task 3 - userlar fayllarini tayyorlash
 var userFiles = (await Task.WhenAll(createFileTasks)).ToList();
 var writeToFileTasks = userFiles.Select(file =>
 {
@@ -84,7 +102,7 @@ var writeToFileTasks = userFiles.Select(file =>
     return file.WriteAsync(Encoding.UTF8.GetBytes(message));
 });
 
-// Task 4 - userlarga fayllari tayyor bo'lganini xabar berish
+// // Task 4 - userlarga fayllari tayyor bo'lganini xabar berish
 var sendEmailResults = await Task.WhenAll(sendRegistrationEmailTasks);
 Console.WriteLine(
     $"{sendEmailResults.Length} dan {sendEmailResults.Count(sendEmailResults => sendEmailResults)} tasi ga email to'g'ri jo'natildi");
@@ -99,16 +117,3 @@ var sendCompletionEmailTasks = emailAddresses.Select(async emailAddress =>
 });
 
 await Task.WhenAll(sendCompletionEmailTasks);
-
-
-// var first = createFileTasks.First();
-// first.Wait();
-// first.Result;
-
-// foreach (var message in userFiles)
-// {
-//     Console.WriteLine(message);
-// }
-
-
-// userFiles.
