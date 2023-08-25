@@ -18,7 +18,7 @@ namespace N16.ReadOnlyProperty
         private readonly string _fromAddress;
 
         // Read-only property
-        public string FromAddress { get => _fromAddress; }
+        public string FromAddress { get => _fromAddress; set }
 
         // expression-bodied read-only property
         //public string FromAddress => _fromAddress;

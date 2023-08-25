@@ -13,9 +13,9 @@ namespace N18.PrivateCtor
 
     public class EmailService
     {
-        private static EmailService _instance;
-
         public string CredentialEmail { get; private set; }
+
+        private static EmailService? _instance;
 
         private EmailService()
         {
