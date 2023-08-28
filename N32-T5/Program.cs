@@ -5,15 +5,34 @@ var stopwatch = new Stopwatch();
 stopwatch.Start();
 
 for (var index = 0; index < 100_000; index++)
-{
-    var result = CustomValidator.IsValidEmailAddress("test.com");
-    if (result.Any())
-    {
-        Console.WriteLine("Email address is invalid");
-        result.ForEach(Console.WriteLine);
-    }
-}
+    CustomValidator.IsValidEmailAddress(null);
 
-// display elapsed in milliseconds
 stopwatch.Stop();
 Console.WriteLine($"Elapsed time: {stopwatch.ElapsedMilliseconds} ms");
+stopwatch.Restart();
+
+for (var index = 0; index < 100_000; index++)
+    CustomValidator.IsValidEmailAddress("");
+
+stopwatch.Stop();
+Console.WriteLine($"Elapsed time: {stopwatch.ElapsedMilliseconds} ms");
+stopwatch.Restart();
+
+for (var index = 0; index < 100_000; index++)
+    CustomValidator.IsValidEmailAddress("test.co@m");
+
+stopwatch.Stop();
+Console.WriteLine($"Elapsed time: {stopwatch.ElapsedMilliseconds} ms");
+
+// With nested if
+// Elapsed time: 8 ms
+// Elapsed time: 0 ms
+// Elapsed time: 38 ms
+
+// Without nested if
+// Elapsed time: 10 ms
+// Elapsed time: 0 ms
+// Elapsed time: 68 ms
+
+
+
