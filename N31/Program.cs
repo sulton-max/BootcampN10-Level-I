@@ -1,5 +1,7 @@
 ﻿//(Index based access, Conversion, Combining and Joining )
 
+using N31;
+
 var users = new List<User>();
 users.Add(new("John", "jonibek", 10));
 users.Add(new("Michael", "Mike", 32));
@@ -74,19 +76,21 @@ foreach (var user in usersQueryable)
 foreach (var user in usersQueryable)
     Console.WriteLine(user);
 
-public class Test
+namespace N31
 {
-    // IList - index
-    // ICollection - add, remove
-    // IEnumerable - foreach
-    public void SendEmails(IEnumerable<User> users)
+    public class Test
     {
-        foreach(var user in users)
+        // IList - index
+        // ICollection - add, remove
+        // IEnumerable - foreach
+        public void SendEmails(IEnumerable<User> users)
         {
-            Console.WriteLine("Sending email ...");
+            foreach(var user in users)
+            {
+                Console.WriteLine("Sending email ...");
+            }
         }
     }
-}
 
 
 
@@ -95,53 +99,54 @@ public class Test
 
 
 
-public class User
-{
-    public Guid Id { get; set; }
-    public string FirstName { get; set; }
-    public string UserName { get; set; }
-    public string Role { get; set; }
-    public int Age { get; set; }
-
-    public User(string firstName, string userName, int age)
+    public class User
     {
-        Id = Guid.NewGuid();
-        UserName = userName;
-        FirstName = firstName;
-        Age = age;
+        public Guid Id { get; set; }
+        public string FirstName { get; set; }
+        public string UserName { get; set; }
+        public string Role { get; set; }
+        public int Age { get; set; }
 
-        var random = new Random();
-        Role = random.Next(0, 2) == 0 ? "Admin" : "User";
-    }
+        public User(string firstName, string userName, int age)
+        {
+            Id = Guid.NewGuid();
+            UserName = userName;
+            FirstName = firstName;
+            Age = age;
 
-    public override string ToString()
-    {
-        return $"{FirstName} {Age}";
-    }
+            var random = new Random();
+            Role = random.Next(0, 2) == 0 ? "Admin" : "User";
+        }
 
-    public override int GetHashCode()
-    {
-        // 17 va 23 siz GetHashCode ni qiymati mana bunday bo'lur
+        public override string ToString()
+        {
+            return $"{FirstName} {Age}";
+        }
 
-        // Alex   23 yosh              23423234
-        // Alexa  23 yosh              23424234
+        public override int GetHashCode()
+        {
+            // 17 va 23 siz GetHashCode ni qiymati mana bunday bo'lur
+
+            // Alex   23 yosh              23423234
+            // Alexa  23 yosh              23424234
 
 
-        // 17 va 23 bilan GetHashCode ni qiymati mana bunday bo'lur
+            // 17 va 23 bilan GetHashCode ni qiymati mana bunday bo'lur
 
-        // Alex   23 yosh              23423234
-        // Alexa  23 yosh              53277428
+            // Alex   23 yosh              23423234
+            // Alexa  23 yosh              53277428
 
-        var hash = 17;
-        hash = hash * 23 + FirstName.GetHashCode();
-        hash = hash * 23 + UserName.GetHashCode();
-        hash = hash * 23 + Age.GetHashCode();
+            var hash = 17;
+            hash = hash * 23 + FirstName.GetHashCode();
+            hash = hash * 23 + UserName.GetHashCode();
+            hash = hash * 23 + Age.GetHashCode();
 
-        return hash;
-    }
+            return hash;
+        }
 
-    public override bool Equals(object obj)
-    {
-        return GetHashCode() == obj.GetHashCode();
+        public override bool Equals(object obj)
+        {
+            return GetHashCode() == obj.GetHashCode();
+        }
     }
 }

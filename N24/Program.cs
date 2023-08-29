@@ -1,4 +1,6 @@
-﻿var laptops = new List<Laptop>
+﻿using N24;
+
+var laptops = new List<Laptop>
 {
     new Laptop("Dell", "Inspiron 15", 799, 15),
     new Laptop("HP", "Pavilion 14", 699, 14),
@@ -52,7 +54,10 @@ laptops[5].IsDeleted = false;
 foreach (var laptop in filteredLaptopsQuery)
     Console.WriteLine($"Brand - {laptop.Brand}, Model - {laptop.Model}, Price - {laptop.Price}, Display size - {laptop.DisplaySize}");
 
-#endregion 
+namespace N24
+{
+
+    #endregion 
 
 // Searching
 
@@ -73,43 +78,44 @@ foreach (var laptop in filteredLaptopsQuery)
 //        Console.WriteLine($"Brand - {item.Brand}, Model - {item.Model}, Price - {item.Price}, Display size - {item.DisplaySize}");
 //}
 
-public class Laptop
-{
-    public string Brand { get; set; }
-    public string Model { get; set; }
-    public int Price { get; set; }
-    public int DisplaySize { get; set; }
-    public bool IsDeleted { get; set; }
-
-    public Laptop(string brand, string model, int price, int displaySize)
+    public class Laptop
     {
-        Brand = brand;
-        Model = model;
-        Price = price;
-        DisplaySize = displaySize;
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public int Price { get; set; }
+        public int DisplaySize { get; set; }
+        public bool IsDeleted { get; set; }
+
+        public Laptop(string brand, string model, int price, int displaySize)
+        {
+            Brand = brand;
+            Model = model;
+            Price = price;
+            DisplaySize = displaySize;
+        }
     }
-}
 
 // Value tiplarda default qiymat - 0, true, false
 // Nullable - optional narsalar uchun default value 0 , true, false bo'lib qolmasligi uchun
-public class LaptopFilterModel
-{
-    public string Brand { get; set; }
-    public int? Price { get; set; }
-    public int? DisplaySize { get; set; }
-
-    public LaptopFilterModel(string brand, int? price, int? displaySize)
+    public class LaptopFilterModel
     {
-        Brand = brand;
-        Price = price;
-        DisplaySize = displaySize;
-    }
-}
+        public string Brand { get; set; }
+        public int? Price { get; set; }
+        public int? DisplaySize { get; set; }
 
-public class Employee
-{
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public int Salary { get; set; }
-    public int Kpi { get; set; }
+        public LaptopFilterModel(string brand, int? price, int? displaySize)
+        {
+            Brand = brand;
+            Price = price;
+            DisplaySize = displaySize;
+        }
+    }
+
+    public class Employee
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Salary { get; set; }
+        public int Kpi { get; set; }
+    }
 }

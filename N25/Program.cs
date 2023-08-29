@@ -16,6 +16,7 @@
 // Select
 
 using System.Text.Json;
+using N25;
 
 var users = new List<User>
 {
@@ -93,16 +94,18 @@ var valueB = TalentLevel.Intern;
 var result = valueA > valueB;
 Console.WriteLine(default(TalentLevel));
 
-// var score = 60;
+namespace N25
+{
+    // var score = 60;
 // var englishLevel = score switch
 // {
 //
 // }
 
-public class MessageConstants
-{
-    public const string UserToken = "{{User}}";
-}
+    public class MessageConstants
+    {
+        public const string UserToken = "{{User}}";
+    }
 
 //
 // public class TalentFilterModel
@@ -114,7 +117,7 @@ public class MessageConstants
 
 // Principle - Composition over Inheritance
 
-var service = new();
+    var service = new();
 
 // validation -
 // verification -
@@ -127,64 +130,59 @@ var service = new();
 // abstraction - compositon uchun abstraction ishlatiladi
 
 // muammo - Register
-service.Register("john", "doe", "john.doe@gmail.com", "asdfasdf");
+    service.Register("john", "doe", "john.doe@gmail.com", "asdfasdf");
 
-public interface IUserService
-{
-    User AddUser(string emailAddress);
-}
-
-public class UserService : IUserService
-{
-    public User AddUser(string emailAddress)
+    public interface IUserService
     {
+        User AddUser(string emailAddress);
     }
-}
 
-public interface IEmailService
-{
-    void SendEmail(string emailAddress, string subject, string body);
-}
-
-public class EmailService : IEmailService
-{
-    public void SendEmail(string emailAddress, string subject, string body)
+    public class UserService : IUserService
     {
-        throw new NotImplementedException();
+        public User AddUser(string emailAddress)
+        {
+        }
     }
-}
+
+    public interface IEmailService
+    {
+        void SendEmail(string emailAddress, string subject, string body);
+    }
+
+    public class EmailService : IEmailService
+    {
+        public void SendEmail(string emailAddress, string subject, string body)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
 // dependency - service, configuration
 // dependency narsalar doim konstruktordan kiritilsin
 
-public class AccountService
-{
-    private readonly IUserService _userService;
-    private readonly IEmailService _emailService;
-
-    public AccountService(IUserService userService, IEmailService emailService)
+    public class AccountService
     {
-        _userService = userService;
-        _emailService = emailService;
-    }
+        private readonly IUserService _userService;
+        private readonly IEmailService _emailService;
 
-    public void Register(string emailAddress, string password)
-    {
-        // working solution - hamma ishni shu methodda yozish
-        // right solution - har bir ishni alohida methodda yozish, inheritance
-        // better solution - email - EmailService, user - UserService, credential - CredentialService
-        // perfect solution - interfeys lar orqali qilish
-
-        var user = _userService.AddUser(emailAddress);
-        if (user is not null)
+        public AccountService(IUserService userService, IEmailService emailService)
         {
-            // _emailService.SendEmail();
+            _userService = userService;
+            _emailService = emailService;
+        }
+
+        public void Register(string emailAddress, string password)
+        {
+            // working solution - hamma ishni shu methodda yozish
+            // right solution - har bir ishni alohida methodda yozish, inheritance
+            // better solution - email - EmailService, user - UserService, credential - CredentialService
+            // perfect solution - interfeys lar orqali qilish
+
+            var user = _userService.AddUser(emailAddress);
+            if (user is not null)
+            {
+                // _emailService.SendEmail();
+            }
         }
     }
 }
-
-
-
-
-
-

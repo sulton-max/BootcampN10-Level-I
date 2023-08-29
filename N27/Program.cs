@@ -4,6 +4,7 @@
 // LINQ methodlari - asosiy kolleksiyani o'zgartirmaydi
 
 using System.Text.Json;
+using N27;
 
 var list = new List<int>
 {
@@ -187,66 +188,70 @@ var groupJoined = productsTypes.GroupJoin(products,
 
 Console.WriteLine(JsonSerializer.Serialize(groupJoined));
 
-#endregion
+namespace N27
+{
+
+    #endregion
 
 // Relation - is-a realtion and has-a relation
 //
 
-public class ProductType
-{
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    // public List<Product> Products { get; set; } = new();
-    public int RecommendedPrice { get; set; }
-
-    public ProductType(int recommendedPrice, string name, string description)
+    public class ProductType
     {
-        Id = Guid.NewGuid();
-        RecommendedPrice = recommendedPrice;
-        Name = name;
-        Description = description;
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        // public List<Product> Products { get; set; } = new();
+        public int RecommendedPrice { get; set; }
+
+        public ProductType(int recommendedPrice, string name, string description)
+        {
+            Id = Guid.NewGuid();
+            RecommendedPrice = recommendedPrice;
+            Name = name;
+            Description = description;
+        }
     }
-}
 
 // IPhone is a phone
 // IPhone has phone
 
 // Relation - has-a realtion
-public interface IProduct
-{
-
-}
-
-public class Laptop : IProduct
-{
-
-}
-
-public class Phone : IProduct
-{
-
-}
-
-public class Product : IProduct
-{
-    public Guid Id { get; set; }
-    public string Brand { get; set; }
-    public string Model { get; set; }
-    public ProductType Type { get; set; }
-    public int Price { get; set; }
-
-    public Product(string brand, string model, int price, ProductType type)
+    public interface IProduct
     {
-        Id = Guid.NewGuid();
-        Brand = brand;
-        Model = model;
-        Price = price;
-        Type = type;
+
     }
 
-    public override string ToString()
+    public class Laptop : IProduct
     {
-        return $"Id: {Id}, Brand: {Brand}, Model: {Model}, Price: {Price}";
+
+    }
+
+    public class Phone : IProduct
+    {
+
+    }
+
+    public class Product : IProduct
+    {
+        public Guid Id { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public ProductType Type { get; set; }
+        public int Price { get; set; }
+
+        public Product(string brand, string model, int price, ProductType type)
+        {
+            Id = Guid.NewGuid();
+            Brand = brand;
+            Model = model;
+            Price = price;
+            Type = type;
+        }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Brand: {Brand}, Model: {Model}, Price: {Price}";
+        }
     }
 }

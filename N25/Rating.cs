@@ -1,4 +1,6 @@
-﻿public enum Rating
+﻿namespace N25;
+
+public enum Rating
 {
     Worst = 1,
     Bad,

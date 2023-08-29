@@ -1,3 +1,5 @@
+namespace N26;
+
 public class TaskItem
 {
     private string Name { get; set; }

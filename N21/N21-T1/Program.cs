@@ -1,4 +1,4 @@
-﻿using N21.N21_T1;
+﻿using N21_T1;
 
 var list = new MyList<int>();
 list.Add(10);
@@ -7,7 +7,7 @@ list.Add(10);
 
 list.AddRange(new[] {1,2,3});
 
-namespace N21.N21_T1
+namespace N21_T1
 {
     public class MyList<T>
     {

@@ -1,4 +1,6 @@
-﻿public enum TalentLevel
+﻿namespace N25;
+
+public enum TalentLevel
 {
     Intern = 1,
     Junior,

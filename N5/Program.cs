@@ -70,7 +70,7 @@ Console.Write("Enter your email address : ");
 var emailAddressB = Console.ReadLine();
 
 // Minimmum length email domen - a@io
-if (!string.IsNullOrWhiteSpace(emailAddressB))
+if (string.IsNullOrWhiteSpace(emailAddressB))
 {
     if (emailAddressB.Length > 5)
     {

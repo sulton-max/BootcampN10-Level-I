@@ -1,5 +1,7 @@
 using System.Text.RegularExpressions;
 
+namespace N26;
+
 public class LoginModel
 {
     private Dictionary<string, string> _errorsList = new();
@@ -66,7 +68,7 @@ public class LoginModel
     }
 
 
-public List<string> GetErrors()
+    public List<string> GetErrors()
     {
         return _errorsList.Values.ToList();
     }

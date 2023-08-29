@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 
+namespace N23;
+
 public class CustomQueryableCollection<T> : IEnumerable<T>
 {
     private readonly List<T> _collection = new();

@@ -1,4 +1,6 @@
-﻿public class Talent
+﻿namespace N25;
+
+public class Talent
 {
     public Guid Id { get; set; }
 

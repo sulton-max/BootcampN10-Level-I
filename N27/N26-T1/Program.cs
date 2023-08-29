@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using N26_T1;
 
 var skillsA = new List<Skill>
 {
@@ -33,82 +34,85 @@ Console.WriteLine();
 var result = skillsA.Update(skillB);
 Console.WriteLine(JsonSerializer.Serialize(result));
 
-public enum MoneyType
+namespace N26_T1
 {
-}
-
-
-public class Money
-{
-    public int Amount { get; set; }
-    public MoneyType Type { get; set; }
-
-    public Money(int amount, MoneyType type)
-    {
-        Amount = amount;
-        Type = type;
-    }
-
-    public Money()
+    public enum MoneyType
     {
     }
 
-    public static Money operator +(Money first, Money last)
+
+    public class Money
     {
+        public int Amount { get; set; }
+        public MoneyType Type { get; set; }
+
+        public Money(int amount, MoneyType type)
+        {
+            Amount = amount;
+            Type = type;
+        }
+
+        public Money()
+        {
+        }
+
+        public static Money operator +(Money first, Money last)
+        {
 // - moneyA va moneyB bir xil tipda bo'lsa - qo'shiladi
 // - moneyA in balance va moneyB loan bo'lsa - moneyA - moneyB qilinadi
 // - moneyB loan va moneyB in balance bo'lsa - moneyB - moneyA qilinadi
 
-        if (first.Type == last.Type)
-        {
-            return new Money(first.Amount + last.Amount, first.Type);
-        }
-        else
-        {
-        }
+            if (first.Type == last.Type)
+            {
+                return new Money(first.Amount + last.Amount, first.Type);
+            }
+            else
+            {
+            }
 
-        return new Money();
+            return new Money();
+        }
     }
-}
 
-public class Skill
-{
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public int Level { get; set; }
-
-    public Skill(string name, int level)
+    public class Skill
     {
-        Id = Guid.NewGuid();
-        Name = name;
-        Level = level;
-    }
-}
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
 
-public static class CollectionExtensions
-{
-    public static ICollection<Skill> Update(this ICollection<Skill> first, ICollection<Skill> second)
-    {
-        var list = first.ToList();
-        var addedItems = second.ExceptBy(first.Select(firstItem => firstItem.Id), item => item.Id);
-        var removedItems = first.ExceptBy(second.Select(firstItem => firstItem.Id), item => item.Id);
-        var intersectedKeys = first.Select(item => item.Id).Intersect(second.Select(item => item.Id));
-
-        foreach (var item in addedItems)
-            list.Add(item);
-
-        foreach (var item in removedItems)
-            list.Remove(item);
-
-        foreach (var key in intersectedKeys)
+        public Skill(string name, int level)
         {
-            var firstItem = list.First(x => x.Id == key);
-            var secondItem = second.First(x => x.Id == key);
-
-            firstItem.Name = secondItem.Name;
-            firstItem.Level = secondItem.Level;
+            Id = Guid.NewGuid();
+            Name = name;
+            Level = level;
         }
+    }
 
-        return list;
+    public static class CollectionExtensions
+    {
+        public static ICollection<Skill> Update(this ICollection<Skill> first, ICollection<Skill> second)
+        {
+            var list = first.ToList();
+            var addedItems = second.ExceptBy(first.Select(firstItem => firstItem.Id), item => item.Id);
+            var removedItems = first.ExceptBy(second.Select(firstItem => firstItem.Id), item => item.Id);
+            var intersectedKeys = first.Select(item => item.Id).Intersect(second.Select(item => item.Id));
+
+            foreach (var item in addedItems)
+                list.Add(item);
+
+            foreach (var item in removedItems)
+                list.Remove(item);
+
+            foreach (var key in intersectedKeys)
+            {
+                var firstItem = list.First(x => x.Id == key);
+                var secondItem = second.First(x => x.Id == key);
+
+                firstItem.Name = secondItem.Name;
+                firstItem.Level = secondItem.Level;
+            }
+
+            return list;
+        }
     }
 }

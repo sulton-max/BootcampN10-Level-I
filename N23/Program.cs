@@ -1,4 +1,6 @@
-﻿var numbers = new List<int>()
+﻿using N23;
+
+var numbers = new List<int>()
 {
     1,
     2,
@@ -89,17 +91,20 @@ Console.WriteLine($"contains - {contains}");
 
 
 
-public class Question
+namespace N23
 {
-    public string Text { get; set; }
-    public bool IsSkipped { get; set; }
-    public bool IsRightAnswer { get; set; }
-
-    public Question(string text, bool isSkipped, bool isRightAnswer)
+    public class Question
     {
-        Text = text;
-        IsSkipped = isSkipped;
-        IsRightAnswer = isRightAnswer;
+        public string Text { get; set; }
+        public bool IsSkipped { get; set; }
+        public bool IsRightAnswer { get; set; }
+
+        public Question(string text, bool isSkipped, bool isRightAnswer)
+        {
+            Text = text;
+            IsSkipped = isSkipped;
+            IsRightAnswer = isRightAnswer;
+        }
     }
 }
 

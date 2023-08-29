@@ -121,11 +121,14 @@ else
 }
 
 
-public class Test
+namespace N26
 {
-    public readonly List<int> List = new();
+    public class Test
+    {
+        public readonly List<int> List = new();
 
-    public void Add(int value) => List.Add(value);
+        public void Add(int value) => List.Add(value);
+    }
 }
 
 

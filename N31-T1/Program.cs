@@ -148,10 +148,14 @@ var orders = new List<Order>
     new (99, 16, 4283, new DateTime(2023, 1, 10))
 };
 
-// foreach(var order in orders.Where(order => order.OrderDate > DateTime.Now))
-//     Console.WriteLine(order.Id);
 
-var ordersByCustomer = customers.GroupJoin(orders,
+
+
+
+
+
+var ordersByCustomer = customers
+    .GroupJoin(orders,
         customer => customer.Id,
         order => order.CustomerId,
         (customer, customerOrders) => new
